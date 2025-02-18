@@ -1,0 +1,150 @@
+
+center > font > small { display: none !important;}  iframe {  border: none; } 
+
+/* Dropdown Button */
+.dropbtn {
+    /*background-color: #cce0ff;*/
+    color: #e6e6e6;
+    font-weight: bold;
+    padding: 3px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition-duration: 0.3s;
+    background: #cce0ff; /* For browsers that do not support gradients */
+    background: -moz-linear-gradient(#677D91, #35404b); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#677D91, #35404b); /* Standard syntax (must be last) */
+}
+
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    /*background-color: #c1d6f1;*/
+    font-weight: bold;
+    color: #fff;
+   	background: #cce0ff; /* For browsers that do not support gradients */
+    background: -moz-linear-gradient(#35404b, #677D91); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#35404b, #677D91); /* Standard syntax (must be last) */
+}
+
+/* The container - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f2f2f2;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #000;
+    padding: 7px 14px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	/*background-color: #f1f1f1; */
+	color: #000;
+	font-weight: bold;
+	background: #cce0ff; /* For browsers that do not support gradients */
+    background: -moz-linear-gradient(#b3d1ff, #cce0ff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#b3d1ff, #cce0ff); /* Standard syntax (must be last) */
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+html, body, .div-2 {
+        height: 99.5%;
+        min-height: 99.5%;
+}
+.tabs-header {
+	background: #c3ccd5; /* For browsers that do not support gradients */
+    background: -moz-linear-gradient(#c3ccd5, #889aaa); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#c3ccd5, #889aaa); /* Standard syntax (must be last) */
+	border-color: #889aaa;
+}
+
+.tabs-panels {
+	border: 0;
+}
+
+.tabs {
+	border-rigth: 0;
+	border-left: 0;
+}
+
+#grad1 {
+    height: 97.5%;
+    min-height: 97.5%;
+    /*background: #778B9D; *//* For browsers that do not support gradients */
+    background: -moz-linear-gradient(#778B9D, #000033); 
+    background: linear-gradient(#778B9D, #000); 
+}
+
+
+	/* Iconos para tabs cuando se carga con variable de sesion */
+
+ .icon-4 {
+     background: transparent url("iconos/centrovisualizacion.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-5 {
+     background: transparent url("iconos/camara.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ } 
+ .icon-6 {
+     background: transparent url("iconos/puntosvisualizacion.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-7 {
+     background: transparent url("iconos/gestionmantenimiento.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-8 {
+     background: transparent url("iconos/gestionpersonal.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-9 {
+     background: transparent url("iconos/gestionproveedores.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-10 {
+     background: transparent url("iconos/enviar.ico") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-11 {
+     background: transparent url("iconos/recibir.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+  .icon-12 {
+     background: transparent url("iconos/gestionestados.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-13 {
+     background: transparent url("iconos/gestionmarcas.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ .icon-14 {
+     background: transparent url("iconos/gestionroles.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
+ 
+ .icon-15{
+     background: transparent url("iconos/racks.png") no-repeat scroll center center;
+	 background-size: 12px 12px;
+ }
