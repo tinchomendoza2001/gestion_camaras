@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>correo_config</title>
+<meta name="GENERATOR" content="CodeCharge Studio 5.1.1.18992">
+<link rel="stylesheet" type="text/css" href="../Styles/{CCS_Style}/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/{CCS_Style}/jquery-ui.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Plugin Calls @1-7130882E
+    $('*:ccsControl(camera_email_config, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body>
+<p>{mymenu}</p>
+<p>
+<!-- BEGIN Record camera_email_config -->
+<form id="camera_email_config" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="../Styles/{CCS_Style}/Images/Spacer.gif"></td> 
+            <td class="th"><strong>Configuracion de Correo</strong></td> 
+            <td class="HeaderRight"><img alt="" src="../Styles/{CCS_Style}/Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configEMAIL">{res:EMAIL}</label></td> 
+            <td><input type="text" id="camera_email_configEMAIL" maxlength="64" size="50" value="{EMAIL}" name="{EMAIL_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configNAME">{res:NAME}</label></td> 
+            <td><input type="text" id="camera_email_configNAME" maxlength="64" size="50" value="{NAME}" name="{NAME_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configHOST">{res:HOST}</label></td> 
+            <td><input type="text" id="camera_email_configHOST" maxlength="64" size="50" value="{HOST}" name="{HOST_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configPORT">{res:PORT}</label></td> 
+            <td><input type="text" id="camera_email_configPORT" maxlength="10" size="10" value="{PORT}" name="{PORT_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configSMTPSECURE">{res:SMTPSECURE}</label></td> 
+            <td><input type="text" id="camera_email_configSMTPSECURE" maxlength="6" size="6" value="{SMTPSECURE}" name="{SMTPSECURE_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configUSERNAME">{res:USERNAME}</label></td> 
+            <td><input type="text" id="camera_email_configUSERNAME" maxlength="32" size="32" value="{USERNAME}" name="{USERNAME_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configPASSWORD">{res:PASSWORD}</label></td> 
+            <td><input type="password" id="camera_email_configPASSWORD" maxlength="32" size="32" value="{PASSWORD}" name="{PASSWORD_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configSMTPAUTH">{res:SMTPAUTH}</label></td> 
+            <td><input type="text" id="camera_email_configSMTPAUTH" maxlength="8" size="8" value="{SMTPAUTH}" name="{SMTPAUTH_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configAUTHTYPE">{res:AUTHTYPE}</label></td> 
+            <td><input type="text" id="camera_email_configAUTHTYPE" maxlength="8" size="8" value="{AUTHTYPE}" name="{AUTHTYPE_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_email_configCHARSET">{res:CHARSET}</label></td> 
+            <td><input type="text" id="camera_email_configCHARSET" maxlength="8" size="8" value="{CHARSET}" name="{CHARSET_Name}"></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Update --><input type="submit" id="camera_email_configButton_Update" class="Button" alt="{res:CCS_Update}" value="Actualizar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="camera_email_configButton_Cancel" class="Button" alt="{res:CCS_Cancel}" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record camera_email_config --><br>
+</p>
+</body>
+</html>

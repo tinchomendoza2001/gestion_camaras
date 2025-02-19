@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Editar Usuario</title>
+<script language="JavaScript" src="../js/md5.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//camera_usersprovider_connexion_idOnChange Event Start @-AF333D64
+    actions["camera_usersprovider_connexion_idOnChange"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersprovider_connexion_idOnChange Event Start
+
+//Custom Code @57-2A29BDB7
+        // -------------------------
+        var parametros = { 'provider_connexion_id' : this.value };
+        $.ajax({
+            data:  parametros,
+            url:   'cm_asociado.php',
+            type:  'post',
+            success:  function (response) {
+                var cant_cm = document.getElementsByName('CheckBoxList2[]').length;
+                if(response.length > 0){
+                        for(var i=0;i<response.length;i++){
+                                var valor = response[i];
+                                for(var j=0;j<cant_cm;j++){
+                                        if(document.getElementsByName('CheckBoxList2[]')[j].value == valor){
+                                                document.getElementsByName('CheckBoxList2[]')[j].checked = true;
+                                        }
+                                }
+                        }
+                }
+            }
+        });
+        // -------------------------
+//End Custom Code
+
+//camera_usersprovider_connexion_idOnChange Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersprovider_connexion_idOnChange Event End
+
+//camera_userspass_wordOnLoad Event Start @-1AAE1C89
+    actions["camera_userspass_wordOnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End camera_userspass_wordOnLoad Event Start
+
+//Custom Code @52-2A29BDB7
+        // -------------------------
+        $('#camera_userscontrasenia_pass_edit').val($('#camera_userspass_word').val());
+        // -------------------------
+//End Custom Code
+
+//camera_userspass_wordOnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_userspass_wordOnLoad Event End
+
+//camera_usersCheckBox1OnClick Event Start @-3DAAADDC
+    actions["camera_usersCheckBox1OnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersCheckBox1OnClick Event Start
+
+//Custom Code @61-2A29BDB7
+        // -------------------------
+        var cant_cm = document.getElementsByName('CheckBoxList2[]').length;
+        for(var j=0;j<cant_cm;j++){
+                        document.getElementsByName('CheckBoxList2[]')[j].checked = true;
+        }
+        this.checked = false;
+        // -------------------------
+//End Custom Code
+
+//camera_usersCheckBox1OnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersCheckBox1OnClick Event End
+
+//camera_usersCheckBox2OnClick Event Start @-1455DB70
+    actions["camera_usersCheckBox2OnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersCheckBox2OnClick Event Start
+
+//Custom Code @62-2A29BDB7
+        // -------------------------
+        var cant_cm = document.getElementsByName('CheckBoxList2[]').length;
+        for(var j=0;j<cant_cm;j++){
+                        document.getElementsByName('CheckBoxList2[]')[j].checked = false;
+        }
+        this.checked = false;
+        // -------------------------
+//End Custom Code
+
+//camera_usersCheckBox2OnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersCheckBox2OnClick Event End
+
+//camera_usersOnSubmit Event Start @-23232982
+    actions["camera_usersOnSubmit"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersOnSubmit Event Start
+
+//Custom Code @51-2A29BDB7
+        // -------------------------
+        if($('#camera_userspass_word').val() != $('#camera_userscontrasenia_pass_edit').val()){
+                $('#camera_userspass_word').val(hex_md5($('#camera_userscontrasenia_pass_edit').val()));
+        }
+        // -------------------------
+//End Custom Code
+
+//camera_usersOnSubmit Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersOnSubmit Event End
+
+//Event Binding @1-FFA65BF6
+    $('*:ccsControl(camera_users, provider_connexion_id)').ccsBind(function() {
+        this.bind("change", actions["camera_usersprovider_connexion_idOnChange"]);
+    });
+    $('*:ccsControl(camera_users, pass_word)').ccsBind(function() {
+        this.each(function(){ actions["camera_userspass_wordOnLoad"].call(this); });
+    });
+    $('*:ccsControl(camera_users, CheckBox1)').ccsBind(function() {
+        this.bind("click", actions["camera_usersCheckBox1OnClick"]);
+    });
+    $('*:ccsControl(camera_users, CheckBox2)').ccsBind(function() {
+        this.bind("click", actions["camera_usersCheckBox2OnClick"]);
+    });
+    $('*:ccsControl(camera_users)').ccsBind(function() {
+        this.bind("submit", actions["camera_usersOnSubmit"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-516D699B
+    $('*:ccsControl(camera_users, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/{CCS_Style}/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/{CCS_Style}/jquery-ui.css">
+</head>
+<body class="claro {app_environment_class}">
+{mymenu} 
+<div>
+  <!-- BEGIN Record camera_users -->
+  <form id="camera_users" method="post" name="{HTMLFormName}" action="{Action}">
+    <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+      <tr>
+        <td valign="top">
+          <table class="Header" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="HeaderLeft"><img alt="" src="../Styles/{CCS_Style}/Images/Spacer.gif"></td> 
+              <td class="th"><strong>Agregar/Editar Usuario</strong></td> 
+              <td class="HeaderRight"><img alt="" src="../Styles/{CCS_Style}/Images/Spacer.gif"></td>
+            </tr>
+          </table>
+ 
+          <table class="Record" cellspacing="0" cellpadding="0">
+            <!-- BEGIN Error -->
+            <tr id="ErrorBlock" class="Error">
+              <td colspan="4"><font size="3"><strong>{Error}</strong></font></td>
+            </tr>
+            <!-- END Error -->
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersrealname">Denominacion</label></td> 
+              <td><input type="text" id="camera_usersrealname" maxlength="150" size="50" value="{realname}" name="{realname_Name}"></td> 
+              <td>Perfil:&nbsp;</td> 
+              <td>Centros de Monitoreos Accesibles:&nbsp;</td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersusername_edit">Login</label></td> 
+              <td><input type="text" id="camera_usersusername_edit_edit" maxlength="50" size="50" value="{username_edit}" name="{username_edit_Name}"></td> 
+              <td rowspan="26">
+                <!-- BEGIN CheckBoxList CheckBoxList1 --><input type="checkbox" id="camera_usersCheckBoxList1_{CheckBoxList1:optionNumber}" value="{Value}" name="{CheckBoxList1_Name}" {Check}><label for="camera_usersCheckBoxList1_{CheckBoxList1:optionNumber}">{Description}</label><br>
+                <!-- END CheckBoxList CheckBoxList1 -->
+                <td rowspan="26">
+                  <!-- BEGIN CheckBoxList CheckBoxList2 --><input type="checkbox" id="camera_usersCheckBoxList2_{CheckBoxList2:optionNumber}" value="{Value}" name="{CheckBoxList2_Name}" {Check}><label for="camera_usersCheckBoxList2_{CheckBoxList2:optionNumber}">{Description}</label><br>
+                  <!-- END CheckBoxList CheckBoxList2 -->
+                  <hr><input type="checkbox" id="camera_usersCheckBox1" value="1" name="{CheckBox1_Name}" {CheckBox1}>Todos<br>
+                  <input type="checkbox" id="camera_usersCheckBox2" value="1" name="{CheckBox2_Name}" {CheckBox2}>Ninguno</td></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_userscontrasenia_pass">Password</label></td> 
+              <td><input type="password" id="camera_userscontrasenia_pass_edit" maxlength="64" size="50" value="{contrasenia_pass}" name="{contrasenia_pass_Name}"><input type="hidden" id="camera_userspass_word" value="{pass_word}" name="{pass_word_Name}"></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersemail">E-Mail</label></td> 
+              <td><input type="text" id="camera_usersemail" maxlength="250" size="50" value="{email}" name="{email_Name}"></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersgroup_id">Rol</label></td> 
+              <td>
+                <select id="camera_usersgroup_id" name="{group_id_Name}">
+                  {group_id_Options}
+                </select>
+ <span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(nivel de acceso del usuario)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersactive">Activo</label></td> 
+              <td><input type="checkbox" id="camera_usersactive" value="1" name="{active_Name}" {active}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(permite&nbsp;acceso al sistema)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersticket">Acceso a Ticket</label></td> 
+              <td><input type="checkbox" id="camera_usersticket" value="1" name="{ticket_Name}" {ticket}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(permite acceso al listado de tickets)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersticket_cerrado">Editar Tickets Cerrados</label></td> 
+              <td><input type="checkbox" id="camera_usersticket_cerrado" value="1" name="{ticket_cerrado_Name}" {ticket_cerrado}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(permite siempre la edicion del ticket aunque este cerrado)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersnota">Editar Nota</label></td> 
+              <td><input type="checkbox" id="camera_usersnota" value="1" name="{nota_Name}" {nota}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(permite la edicion de las notas)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_userscartografia">Editar Cartografia</label></td> 
+              <td><input type="checkbox" id="camera_userscartografia" value="1" name="{cartografia_Name}" {cartografia}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(habilita los botones para&nbsp;la edicion de datos de la ubicacion en cartografia)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersges_user">Gestion de Usuarios</label></td> 
+              <td><input type="checkbox" id="camera_usersges_user" value="1" name="{ges_user_Name}" {ges_user}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(permite el acceso de la gestion de usuarios)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersnovedad_s_ticket">Registrar Novedad Sin Ticket</label></td> 
+              <td><input type="checkbox" id="camera_usersnovedad_s_ticket" value="1" name="{novedad_s_ticket_Name}" {novedad_s_ticket}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(habilita el link de registro de novedades sin ticket)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_userscamara">Editar datos de Camara</label></td> 
+              <td><input type="checkbox" id="camera_userscamara" value="1" name="{camara_Name}" {camara}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(habilita los botones para la edicion de los datos de camara)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Ver imagen cartografía</td> 
+              <td><input type="checkbox" id="camera_usersver_mapa" value="1" name="{ver_mapa_Name}" {ver_mapa}></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Camara: pasar a disponible</td> 
+              <td><input type="checkbox" id="camera_userscam_disponible" value="1" name="{cam_disponible_Name}" {cam_disponible}>&nbsp;<span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(habilita boton que pasa a disponible, solo si no esta utilizado)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersprovider_connexion_id">Es proveedor de</label></td> 
+              <td>
+                <select id="camera_usersprovider_connexion_id" name="{provider_connexion_id_Name}">
+                  <option selected value="">...</option>
+                  {provider_connexion_id_Options}
+                </select>
+ <span style="FONT-SIZE: x-small; FONT-FAMILY: Verdana; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(249,249,249); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial"><font size="1">(indica si este usuario pertenece a un proveedor)</font></span></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_usersmonitor_center_p_id">Centro de Monitoreo Principal</label></td> 
+              <td>
+                <select id="camera_usersmonitor_center_p_id" name="{monitor_center_p_id_Name}">
+                  {monitor_center_p_id_Options}
+                </select>
+ <font size="1">(Destinado a Centrar Cartografia y acciones de Stock)</font></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th"><label for="camera_userspage_init_menu">Pagina de Inicio al Loguearse</label></td> 
+              <td>
+                <select id="camera_userspage_init_menu" name="{page_init_menu_Name}">
+                  {page_init_menu_Options}
+                </select>
+ </td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Bajar Excel Tickets</td> 
+              <td>
+                <select id="camera_usersexcel_ticket" name="{excel_ticket_Name}">
+                  {excel_ticket_Options}
+                </select>
+ </td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Visualizar Reportes</td> 
+              <td>
+                <select id="camera_usersrepor_x_depto" name="{repor_x_depto_Name}">
+                  {repor_x_depto_Options}
+                </select>
+ </td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Es centro de visualizacion?</td> 
+              <td>
+                <select id="camera_userses_centro_visual" name="{es_centro_visual_Name}">
+                  {es_centro_visual_Options}
+                </select>
+ <font size="1">(en estado ticket no muestra comentarios y rechazado)</font></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th" colspan="2"><strong>STOCK</strong></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Ingresos</td> 
+              <td><input type="checkbox" id="camera_usersCheckBox3" value="1" name="{CheckBox3_Name}" {CheckBox3}></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Envios</td> 
+              <td><input type="checkbox" id="camera_usersCheckBox4" value="1" name="{CheckBox4_Name}" {CheckBox4}></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Stocks</td> 
+              <td><input type="checkbox" id="camera_usersCheckBox5" value="1" name="{CheckBox5_Name}" {CheckBox5}></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Elementos</td> 
+              <td><input type="checkbox" id="camera_usersCheckBox6" value="1" name="{CheckBox6_Name}" {CheckBox6}></td>
+            </tr>
+ 
+            <tr class="Controls">
+              <td class="th">Orden de Compra</td> 
+              <td><input type="checkbox" id="camera_usersCheckBox7" value="1" name="{CheckBox7_Name}" {CheckBox7}></td>
+            </tr>
+ 
+            <tr class="Bottom">
+              <td style="TEXT-ALIGN: right" colspan="4"><input type="hidden" id="camera_usersvisible" value="{visible}" name="{visible_Name}">
+                <!-- BEGIN Button Button_Insert --><input type="submit" id="camera_usersButton_Insert" alt="{res:CCS_Insert}" value="Agregar" name="{Button_Name}"><!-- END Button Button_Insert -->
+                <!-- BEGIN Button Button_Update --><input type="submit" id="camera_usersButton_Update" alt="{res:CCS_Update}" value="Actualizar" name="{Button_Name}"><!-- END Button Button_Update -->
+                <!-- BEGIN Button Button_Cancel --><input type="submit" id="camera_usersButton_Cancel" alt="{res:CCS_Cancel}" value="Salir" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <!-- END Record camera_users -->
+</div>
+</body>
+</html>

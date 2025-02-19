@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>configuracion</title>
+<script language="JavaScript" src="../js/md5.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/jquery-ui.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-2701730F
+    $('body').ccsBind(function() {
+        features["Panel1UpdatePanel1"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_show"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_hide"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_link_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_submit_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_others_Condition"] = $('*:ccsControl(Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-025BCE71
+    params["Panel1UpdatePanel1"] = {
+        name: "Panel1"
+    };
+//End Feature Parameters
+
+//Feature Init @1-AA52BA14
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["Panel1UpdatePanel1"]);
+    });
+//End Feature Init
+
+//condition_for_show start Entry Point Start @43-4617342F
+    actions["Panel1condition_for_show_start"] = function (eventType, parameters) {
+//End condition_for_show start Entry Point Start
+
+//condition_for_show start Entry Point Body @43-F9058955
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "link")) {
+            self.trigger($.Event("true.condition_for_show"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_show"), {});
+        }
+//End condition_for_show start Entry Point Body
+
+//condition_for_show start Entry Point End @43-6A43FC60
+    };
+//End condition_for_show start Entry Point End
+
+//condition_for_hide start Entry Point Start @48-5A53631F
+    actions["Panel1condition_for_hide_start"] = function (eventType, parameters) {
+//End condition_for_hide start Entry Point Start
+
+//condition_for_hide start Entry Point Body @48-4B4C4DB5
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "submit" && $("#ErrorBlock").length == 0)) {
+            self.trigger($.Event("true.condition_for_hide"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_hide"), {});
+        }
+//End condition_for_hide start Entry Point Body
+
+//condition_for_hide start Entry Point End @48-6A43FC60
+    };
+//End condition_for_hide start Entry Point End
+
+//ccc_link_Condition start Entry Point Start @53-505B3325
+    actions["Panel1ccc_link_Condition_start"] = function (eventType, parameters) {
+//End ccc_link_Condition start Entry Point Start
+
+//ccc_link_Condition start Entry Point Body @53-4B8521D3
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "link")) {
+            self.trigger($.Event("true.ccc_link_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_link_Condition"), {});
+        }
+//End ccc_link_Condition start Entry Point Body
+
+//ccc_link_Condition start Entry Point End @53-6A43FC60
+    };
+//End ccc_link_Condition start Entry Point End
+
+//ccc_submit_Condition start Entry Point Start @64-D5BAC60E
+    actions["Panel1ccc_submit_Condition_start"] = function (eventType, parameters) {
+//End ccc_submit_Condition start Entry Point Start
+
+//ccc_submit_Condition start Entry Point Body @64-D25EF30D
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "submit")) {
+            self.trigger($.Event("true.ccc_submit_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_submit_Condition"), {});
+        }
+//End ccc_submit_Condition start Entry Point Body
+
+//ccc_submit_Condition start Entry Point End @64-6A43FC60
+    };
+//End ccc_submit_Condition start Entry Point End
+
+//ccc_others_Condition start Entry Point Start @79-52A5E8CF
+    actions["Panel1ccc_others_Condition_start"] = function (eventType, parameters) {
+//End ccc_others_Condition start Entry Point Start
+
+//ccc_others_Condition start Entry Point Body @79-D9CD92AF
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "")) {
+            self.trigger($.Event("true.ccc_others_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_others_Condition"), {});
+        }
+//End ccc_others_Condition start Entry Point Body
+
+//ccc_others_Condition start Entry Point End @79-6A43FC60
+    };
+//End ccc_others_Condition start Entry Point End
+
+//Panel1camera_usersmonitor_center_p_idOnChange Event Start @-FAB91E78
+    actions["Panel1camera_usersmonitor_center_p_idOnChange"] = function (eventType, parameters) {
+        var result = true;
+//End Panel1camera_usersmonitor_center_p_idOnChange Event Start
+
+//Custom Code @251-2A29BDB7
+        // -------------------------
+        //console.log('10');
+        var cm_id = this.value;
+        var name_id = this.id;
+        var array_name_id = name_id.split("_");
+        var ultimo = array_name_id.length - 1;
+        var valor = array_name_id[ultimo];
+        var usuario_id = document.getElementById("Panel1camera_userscamera_users_id_"+valor).value;
+        var parametros = { 'user_id' : usuario_id, 'cm_id' : cm_id };
+        //console.log(parametros);
+        $.ajax({
+            data:  parametros,
+            url:   'registracm.php',
+            type:  'post',
+            success:  function (response) {
+                console.log(response);
+            }
+        });
+        // -------------------------
+//End Custom Code
+
+//Panel1camera_usersmonitor_center_p_idOnChange Event End @-A5B9ECB8
+        return result;
+    };
+//End Panel1camera_usersmonitor_center_p_idOnChange Event End
+
+//Event Binding @1-2130173D
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_show_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_hide_start"]);
+    });
+    $('#Panel1Panel2DialogPanel1').ccsBind(function() {
+        this.bind("show", actions["Panel1ccc_others_Condition_start"]);
+    });
+    $('#Panel1Panel2DialogPanel1').ccsBind(function() {
+        this.bind("hide", actions["Panel1ccc_others_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, camera_users, camera_users_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, camera_users, realname)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('#Panel1Panel2camera_users1').ccsBind(function() {
+        this.bind("submit", actions["Panel1ccc_submit_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, camera_users, monitor_center_p_id)').ccsBind(function() {
+        this.bind("change", actions["Panel1camera_usersmonitor_center_p_idOnChange"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-5EDD94D0
+    $('*:ccsControl(Panel1, camera_usersSearch, Button1)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body class="claro {app_environment_class}">
+{mymenu} 
+<p>
+<!-- BEGIN Panel Panel1 -->
+<!-- BEGIN Record camera_usersSearch -->
+<form id="Panel1camera_usersSearch" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+            <td class="th"><strong>Buscar Usuario</strong></td> 
+            <td class="HeaderRight"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Panel1camera_usersSearchs_realname">Nombre</label></td> 
+            <td><input type="text" id="Panel1camera_usersSearchs_realname" maxlength="150" size="50" value="{s_realname}" name="{s_realname_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1camera_usersSearchs_username">Usuario</label></td> 
+            <td><input type="text" id="Panel1camera_usersSearchs_username" maxlength="50" size="50" value="{s_username}" name="{s_username_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1camera_usersSearchs_group_id">Grupo</label></td> 
+            <td>
+              <select id="Panel1camera_usersSearchs_group_id" name="{s_group_id_Name}">
+                <option selected value="">Todos</option>
+                {s_group_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button1 --><input type="submit" id="Panel1camera_usersSearchButton1" class="Button" alt="Button1" value="Limpiar" name="{Button_Name}"><!-- END Button Button1 -->&nbsp; 
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Panel1camera_usersSearchButton_DoSearch" class="Button" alt="{res:CCS_Search}" value="Buscar" name="{Button_Name}"><!-- END Button Button_DoSearch --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record camera_usersSearch -->
+<!-- BEGIN Grid camera_users -->
+<table id="Panel1camera_users" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+          <td class="th"><strong>Lista de Usuarios </strong></td> 
+          <td class="HeaderRight"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td>
+        </tr>
+      </table>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th colspan="11" scope="col">
+          <p align="center">&nbsp;<a href="{camera_users_Insert_Src}" id="Panel1camera_userscamera_users_Insert">{res:CCS_InsertLink}</a>&nbsp;&nbsp;&nbsp;</p>
+          </th>
+        </tr>
+ 
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_realname --><span class="Sorter"><a href="{Sort_URL}" id="Panel1camera_usersSorter_realname">Nombre</a> 
+          <!-- BEGIN Asc_On --><img alt="{res:CCS_ASC}" src="../Styles/minseg/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="{res:CCS_DESC}" src="../Styles/minseg/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_realname --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_username --><span class="Sorter"><a href="{Sort_URL}" id="Panel1camera_usersSorter_username">Usuario</a> 
+          <!-- BEGIN Asc_On --><img alt="{res:CCS_ASC}" src="../Styles/minseg/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="{res:CCS_DESC}" src="../Styles/minseg/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_username --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_email --><span class="Sorter"><a href="{Sort_URL}" id="Panel1camera_usersSorter_email">E-Mail</a> 
+          <!-- BEGIN Asc_On --><img alt="{res:CCS_ASC}" src="../Styles/minseg/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="{res:CCS_DESC}" src="../Styles/minseg/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_email --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_group_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1camera_usersSorter_group_id">Grupo</a> 
+          <!-- BEGIN Asc_On --><img alt="{res:CCS_ASC}" src="../Styles/minseg/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="{res:CCS_DESC}" src="../Styles/minseg/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_group_id --></th>
+ 
+          <th scope="col">Activo&nbsp;</th>
+ 
+          <th scope="col">Ticket</th>
+ 
+          <th scope="col">Nota&nbsp;</th>
+ 
+          <th scope="col">Perfil&nbsp;</th>
+ 
+          <th scope="col">&nbsp;CM Principal</th>
+ 
+          <th scope="col">CM</th>
+ 
+          <th scope="col">Pagina Inicio&nbsp;</th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td><a href="{realname_Src}" id="Panel1camera_usersrealname_{camera_users:rowNumber}">{realname}</a><input type="hidden" id="Panel1camera_userscamera_users_id_{camera_users:rowNumber}" value="{camera_users_id}" name="{camera_users_id_Name}"></td> 
+          <td>{username}</td> 
+          <td>{email}</td> 
+          <td>{group_id}</td> 
+          <td>{activo}</td> 
+          <td>{ticket}</td> 
+          <td>{nota}</td> 
+          <td>{perfil}</td> 
+          <td>
+            <select id="Panel1camera_usersmonitor_center_p_id_{camera_users:rowNumber}" name="{monitor_center_p_id_Name}">
+              <option selected value="">NINGUNO</option>
+              {monitor_center_p_id_Options}
+            </select>
+ </td> 
+          <td>{cm}</td> 
+          <td>{camera_menu_description}</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="11"><strong><font color="#ff0000">No hay Registros</font></strong></td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="11">&nbsp; 
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">{res:CCS_RecPerPage} 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/minseg/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/minseg/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/minseg/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/minseg/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} {res:CCS_Of}&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/minseg/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/minseg/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/minseg/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/minseg/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid camera_users --><!-- END Panel Panel1 --></p>
+</body>
+</html>

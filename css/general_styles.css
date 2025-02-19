@@ -1,0 +1,216 @@
+/* Base
+----------------------------------------------------------------------------- */
+html {
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body {
+  height: 100%;
+  margin: 0 !important;
+}
+
+
+/* Layout
+----------------------------------------------------------------------------- */
+.container {
+  padding: 10px 20px;
+}
+
+/* Mapa
+----------------------------------------------------------------------------- */
+#map {
+    min-height: 400px;
+}
+
+#map-reference {
+    background: #fff url(../img/icon_camera_reference_3.png) no-repeat left top;
+    height: 20px;
+    width: 165px;
+    opacity: 0.85;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+    filter: alpha(opacity=85);
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+    #map-reference:hover {
+        height: 280px;
+        opacity: 1;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: alpha(opacity=100);
+    }
+
+#map-search {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    top: -28px;
+    width: 650px;
+}
+
+#comparison-table-filters {
+    float: left;
+}
+
+.map-toolbar {
+  border-bottom: 2px solid #ddd;
+  background-color: #fff;
+  padding: 4px 4px 0;
+  height: 26px;
+}
+
+@media screen and (max-width: 1400px) {
+    .map-toolbar {
+        height: 50px;
+    }
+}
+
+.map-info { display: none; }
+
+
+/* Controls
+----------------------------------------------------------------------------- */
+.controls-panel {
+    background-color: transparent;
+    font-size: 11px;
+    height: 26px;
+    opacity: 0.80;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    filter: alpha(opacity=70);
+    padding: 0 0;
+}
+  .controls-panel:hover {
+      opacity: 1;
+      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=100);
+  }
+
+  .controls-panel input[type="text"] {
+      font-size: 10px;
+      height: 12px;
+  }
+  .controls-panel select {
+      font-size: 11px;
+      width: 75px;
+  }
+  .controls-panel input[type="submit"] {
+      font-size: 10px;
+  }
+
+
+/* Menu
+----------------------------------------------------------------------------- */
+.MenuStyle {
+    background-color: #797979;
+    border-bottom: 3px solid #999;
+    padding-left: 20px;
+    padding-right: 20px;
+    /*border: 1px solid #d4d4d4;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;*/
+    *zoom: 1;
+}
+  .app-environment-test .MenuStyle { background-color: #8C0000; }
+  .app-environment-test .MenuStyle h1:after {
+    content: ' (pruebas)';
+    font-size: 40%;
+    vertical-align: super;
+  }
+
+  .app-environment-dev .MenuStyle { background-color: #0080C0; }
+  .app-environment-dev .MenuStyle h1:after {
+    content: ' (desarrollo)';
+    font-size: 40%;
+    vertical-align: super;
+  }
+
+  .MenuStyle h1 {
+      color: #eee;
+      display: block;
+      padding: 12px 0;
+      margin: 0 !important;
+      font-size: 20px;
+      font-weight: normal;
+      float: left;
+      line-height: 100%;
+  }
+
+  .MenuStyle > ul {
+    margin: 0 0 0 30px;
+    float: left;
+    padding: 12px 0 0 0;
+  }
+
+
+/* Auxiliares
+----------------------------------------------------------------------------- */
+/* Hide CCS legend */
+center > font > small { display: none !important; }
+
+/* Loading */
+.loader {
+    background-image: url(../img/loader.gif);
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+/* Clearfix */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after { clear:both; }
+/* For IE 6/7 (trigger hasLayout) */
+.cf { zoom:1; }
+
+/* Tabla comparativa de localizaciones */
+.comparison-table {
+  font-size: 10px;
+  font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+
+  .comparison-table th {
+    background-color: #555;
+    color: #fff;
+    padding: 5px 5px;
+  }
+
+  .comparison-table td {
+    background-color: #f5f5f5;
+    padding: 3px 5px;
+    white-space: nowrap;
+  }
+
+  .comparison-table tr.equal td { background-color: #DCF2C6; }
+  .comparison-table tr.diff td { background-color: #FCEDED; }
+
+  .comparison-table tr:hover td {
+    background-color: #FFFFD5;
+  }
+
+
+/* PRINT Styles
+----------------------------------------------------------------------------- */
+@media print {
+  .MenuStyle > ul { display: none !important; }
+
+  .map-toolbar button { display: none !important; }
+
+  .map-info {
+    color: #ccc;
+    display: block;
+    font-size: 12px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+
+  #map-reference { height: 234px !important; }
+
+}

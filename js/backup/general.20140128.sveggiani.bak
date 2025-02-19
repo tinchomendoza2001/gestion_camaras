@@ -1,0 +1,82 @@
+/* Funciones
+----------------------------------------------------------------------------- */
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+}
+
+/**
+ * Obtiene el ID en el array de cámaras Javascript de la cámara marcada como seleccionada
+ * @return mixed Índice del array de la cámara seleccionada o false si no hay
+ */
+function getSelectedCamera() {
+  var sel = false;
+  $.each(MinSeg.cameras, function(key, value) {
+    if ( value.selected == "1" ) {
+      sel = key;
+    }
+  });
+  return sel;
+}
+
+
+/**
+ * Devuelve el índice del array de cámaras buscando por el recordID
+ * FIXME: esto se podría mejorar usando direcamente los índices de registro en el array JS
+ * @param  integer recordId ID del registro de la cámara
+ * @return mixed            Índice del array de la cámara seleccionada o false si no hay
+ */
+function getCameraIndex(recordId) {
+  var sel = false;
+  $.each(MinSeg.cameras, function(key, value) {
+    if ( value.recordId == recordId ) {
+      sel = key;
+    }
+  });
+  return sel;
+}
+
+
+
+/* Main
+----------------------------------------------------------------------------- */
+var MinSeg = {
+  // guarda los estados de la aplicación
+  statuses: {
+    addCamera: false,
+    editCamera: false,
+    recordMode: false,
+    addFormError: false,
+    removeFormError: false
+  },
+  // listado de estados para las cámaras
+//cameraStatuses: [ 'projected': 'sadadas', 'free': 'asdasdas' ],
+  // guardar los handlers vinculados a eventos del mpa
+  handlers: {},
+  // guarda el listado de cámaras a dibujar
+  cameras: {},
+  // guarda la cámara a visualizar / centrar
+  selectedCamera: false,
+  // opciones y configuraciones de ArcGis
+  arcgis: {
+    api: 'http://192.168.62.1/arcgis_js_api/library/3.3/jsapicompact_local',
+    css1: 'http://192.168.62.1/arcgis_js_api/library/3.3/jsapicompact_local/js/dojo/dijit/themes/claro/claro.css',
+    css2: 'http://192.168.62.1/arcgis_js_api/library/3.3/jsapicompact_local/js/esri/css/esri.css',
+    services: 'http://192.168.62.1/ArcGIS/rest/services/',
+    locator: 'mdzcalles/DBO.LOCALIZADOR_DESA/GeocodeServer',
+    spatialReferenceId: 22182,
+    layers: {
+        streets: 'mdzcalles/mdzCalles/MapServer',
+        images: 'mdzcalles/mdzImagenes/MapServer',
+        cameras: 'mdzcalles/Videovigilancia/MapServer'
+    },
+    extents: {
+        initial: {
+            xMin: 2513960.66445156,
+            yMin: 6360975.8178074,
+            xMax: 2515132.77096244,
+            yMax: 6361893.3377428
+        }
+    }
+  }
+
+};

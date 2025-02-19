@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>cuenta</title>
+<script language="JavaScript" type="text/javascript">
+function registrar(valor){
+        $.ajax({
+          url: '../gestion/reg_mapa.php',
+          dataType: 'json',
+          async: true,
+          type: 'post',
+          data : { ver : document.getElementById('ver_mapa').value },
+          success: function(data){
+                //console.log(data);
+          }
+        }); 
+}
+</script>
+<script language="JavaScript" src="../js/md5.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/jquery-ui.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//camera_usersButton_UpdateOnClick Event Start @-F368EEBC
+    actions["camera_usersButton_UpdateOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersButton_UpdateOnClick Event Start
+
+//Confirmation Message @16-EA7EB405
+        return confirm('Desea realizar los cambios?');
+//End Confirmation Message
+
+//camera_usersButton_UpdateOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersButton_UpdateOnClick Event End
+
+//camera_usersOnSubmit Event Start @-23232982
+    actions["camera_usersOnSubmit"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersOnSubmit Event Start
+
+//Custom Code @27-2A29BDB7
+        // -------------------------
+        if(document.getElementById('camera_userspassword').value != document.getElementById('camera_userscontrasenia').value){
+                document.getElementById('camera_userspassword').value = hex_md5(document.getElementById('camera_userscontrasenia').value);
+        }
+        // -------------------------
+//End Custom Code
+
+//camera_usersOnSubmit Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersOnSubmit Event End
+
+//camera_usersOnLoad Event Start @-BDB1156C
+    actions["camera_usersOnLoad"] = function (eventType, parameters) {
+        var result = true;
+//End camera_usersOnLoad Event Start
+
+//Custom Code @32-2A29BDB7
+        // -------------------------
+        console.log('load');
+                $.ajax({
+                  url: '../gestion/ver_mapa.php',
+                  dataType: 'json',
+                  async: false,
+                  success: function(data) {
+                        document.getElementById('ver_mapa').value = data;
+                  }
+                });        
+        // -------------------------
+//End Custom Code
+
+//camera_usersOnLoad Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_usersOnLoad Event End
+
+//Event Binding @1-CB92CE75
+    $('*:ccsControl(camera_users, Button_Update)').ccsBind(function() {
+        this.bind("click", actions["camera_usersButton_UpdateOnClick"]);
+    });
+    $('*:ccsControl(camera_users)').ccsBind(function() {
+        this.bind("submit", actions["camera_usersOnSubmit"]);
+    });
+    $('*:ccsControl(camera_users)').ccsBind(function() {
+        this.each(function(){ actions["camera_usersOnLoad"].call(this); });
+    });
+//End Event Binding
+
+//Plugin Calls @1-516D699B
+    $('*:ccsControl(camera_users, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body class="claro {app_environment_class}">
+{mymenu} 
+<p>
+<!-- BEGIN Record camera_users -->
+<form id="camera_users" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+            <td class="th"><strong>Mi Cuenta</strong></td> 
+            <td class="HeaderRight"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2"><strong><font size="3">{Error}</font></strong></td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="camera_usersrealname">Nombres y Apellido</label></td> 
+            <td><input type="text" id="camera_usersrealname" maxlength="150" size="30" value="{realname}" name="{realname_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_usersusername">Nombre de Usuario</label></td> 
+            <td><input type="text" id="camera_usersusername" maxlength="50" size="30" value="{username}" name="{username_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_userspassword">Contraseña</label></td> 
+            <td><input type="password" id="camera_userscontrasenia" maxlength="50" size="30" value="{contrasenia}" name="{contrasenia_Name}"><input type="hidden" id="camera_userspassword" value="{password}" name="{password_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="camera_usersemail">E-Mail</label></td> 
+            <td><input type="text" id="camera_usersemail" maxlength="250" size="30" value="{email}" name="{email_Name}"></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Update --><input type="submit" id="camera_usersButton_Update" class="Button" alt="{res:CCS_Update}" value="Actualizar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="camera_usersButton_Cancel" class="Button" alt="{res:CCS_Cancel}" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th" colspan="2"><strong>Cartografia</strong></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th">Ver imagen en cartografia</td> 
+            <td>
+              <select onchange="registrar(this.value)" id="ver_mapa">
+                <option selected value="0">NO</option>
+ 
+                <option value="1">SI</option>
+              </select>
+ </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record camera_users -->
+</p>
+</body>
+</html>
