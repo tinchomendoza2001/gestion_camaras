@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Motivo por Grupo</title>
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/jquery-ui.css">
+<script language="JavaScript" type="text/javascript">
+function registrar(obj,value_rol){
+	var name_id = obj.id;
+	var arrayDeCadenas = name_id.split('_');
+	var linea = arrayDeCadenas[arrayDeCadenas.length - 1];
+	var motivo_id = document.getElementById('camera_reasons_eventsid_' + linea).value;
+	var marcado = obj.checked;
+	var parametros = { 'motivo_id' : motivo_id, 'value_rol' : value_rol, 'marcado' : marcado};
+    $.ajax({
+        data:  parametros,
+        url:   'relacion_motivo_grupo.php',
+        type:  'post',
+        success:  function (response) {
+            if(response == 1){
+                console.log('registrado');                            
+            }else{
+                console.log('desregistrado');
+            }
+        }
+    });
+}
+</script>
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-A87AC9EE
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//camera_reasons_eventsCheckBox1OnClick Event Start @-53478BDF
+    actions["camera_reasons_eventsCheckBox1OnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_reasons_eventsCheckBox1OnClick Event Start
+
+//Custom Code @30-2A29BDB7
+        // -------------------------
+        registrar(this,document.getElementById('camera_reasons_eventsHidden1').value);
+        // -------------------------
+//End Custom Code
+
+//camera_reasons_eventsCheckBox1OnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_reasons_eventsCheckBox1OnClick Event End
+
+//camera_reasons_eventsCheckBox2OnClick Event Start @-7AB8FD73
+    actions["camera_reasons_eventsCheckBox2OnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_reasons_eventsCheckBox2OnClick Event Start
+
+//Custom Code @31-2A29BDB7
+        // -------------------------
+        registrar(this,document.getElementById('camera_reasons_eventsHidden2').value);
+        // -------------------------
+//End Custom Code
+
+//camera_reasons_eventsCheckBox2OnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_reasons_eventsCheckBox2OnClick Event End
+
+//camera_reasons_eventsCheckBox3OnClick Event Start @-62122F17
+    actions["camera_reasons_eventsCheckBox3OnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_reasons_eventsCheckBox3OnClick Event Start
+
+//Custom Code @32-2A29BDB7
+        // -------------------------
+        registrar(this,document.getElementById('camera_reasons_eventsHidden3').value);
+        // -------------------------
+//End Custom Code
+
+//camera_reasons_eventsCheckBox3OnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_reasons_eventsCheckBox3OnClick Event End
+
+//camera_reasons_eventsCheckBox4OnClick Event Start @-2946102B
+    actions["camera_reasons_eventsCheckBox4OnClick"] = function (eventType, parameters) {
+        var result = true;
+//End camera_reasons_eventsCheckBox4OnClick Event Start
+
+//Custom Code @33-2A29BDB7
+        // -------------------------
+        registrar(this,document.getElementById('camera_reasons_eventsHidden4').value);
+        // -------------------------
+//End Custom Code
+
+//camera_reasons_eventsCheckBox4OnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End camera_reasons_eventsCheckBox4OnClick Event End
+
+//Event Binding @1-6F134578
+    $('*:ccsControl(camera_reasons_events, CheckBox1)').ccsBind(function() {
+        this.bind("click", actions["camera_reasons_eventsCheckBox1OnClick"]);
+    });
+    $('*:ccsControl(camera_reasons_events, CheckBox2)').ccsBind(function() {
+        this.bind("click", actions["camera_reasons_eventsCheckBox2OnClick"]);
+    });
+    $('*:ccsControl(camera_reasons_events, CheckBox3)').ccsBind(function() {
+        this.bind("click", actions["camera_reasons_eventsCheckBox3OnClick"]);
+    });
+    $('*:ccsControl(camera_reasons_events, CheckBox4)').ccsBind(function() {
+        this.bind("click", actions["camera_reasons_eventsCheckBox4OnClick"]);
+    });
+//End Event Binding
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body class="claro {app_environment_class}">
+{mymenu} 
+<div>
+  <!-- BEGIN Grid camera_reasons_events -->
+  <table id="camera_reasons_events" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+            <td class="th"><strong>Motivo por Grupo de Usuario (perfil)</strong></td> 
+            <td class="HeaderRight"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td>
+          </tr>
+        </table>
+ 
+        <table class="Grid" cellspacing="0" cellpadding="0">
+          <tr class="Caption">
+            <th scope="col">
+            <p align="center">
+            <!-- BEGIN Sorter Sorter_description --><span class="Sorter"><a href="{Sort_URL}" id="camera_reasons_eventsSorter_description">Descripcion</a> 
+            <!-- BEGIN Asc_On --><img alt="{res:CCS_ASC}" src="../Styles/minseg/Images/Asc.gif"><!-- END Asc_On -->
+            <!-- BEGIN Desc_On --><img alt="{res:CCS_DESC}" src="../Styles/minseg/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_description --></p>
+            </th>
+ 
+            <th scope="col">
+            <p align="center">Administrador <input type="hidden" id="camera_reasons_eventsHidden1" value="{Hidden1}" name="{Hidden1_Name}"></p>
+            </th>
+ 
+            <th scope="col">
+            <p align="center">Operador <input type="hidden" id="camera_reasons_eventsHidden2" value="{Hidden2}" name="{Hidden2_Name}"></p>
+            </th>
+ 
+            <th scope="col">
+            <p align="center">Consulta <input type="hidden" id="camera_reasons_eventsHidden3" value="{Hidden3}" name="{Hidden3_Name}"></p>
+            </th>
+ 
+            <th scope="col">
+            <p align="center">Directivo <input type="hidden" id="camera_reasons_eventsHidden4" value="{Hidden4}" name="{Hidden4_Name}"></p>
+            </th>
+          </tr>
+ 
+          <!-- BEGIN Row -->
+          <tr class="Row">
+            <td>{description}&nbsp;<input type="hidden" id="camera_reasons_eventsid_{camera_reasons_events:rowNumber}" value="{id}" name="{id_Name}"><input type="hidden" id="camera_reasons_eventslinea_{camera_reasons_events:rowNumber}" value="{linea}" name="{linea_Name}"></td> 
+            <td style="TEXT-ALIGN: right">
+              <div align="center">
+                <input type="checkbox" id="camera_reasons_eventsCheckBox1_{camera_reasons_events:rowNumber}" value="1" name="{CheckBox1_Name}" {CheckBox1}>
+              </div>
+            </td> 
+            <td style="TEXT-ALIGN: right">
+              <div align="center">
+                <input type="checkbox" id="camera_reasons_eventsCheckBox2_{camera_reasons_events:rowNumber}" value="1" name="{CheckBox2_Name}" {CheckBox2}>
+              </div>
+            </td> 
+            <td style="TEXT-ALIGN: right">
+              <div align="center">
+                <input type="checkbox" id="camera_reasons_eventsCheckBox3_{camera_reasons_events:rowNumber}" value="1" name="{CheckBox3_Name}" {CheckBox3}>
+              </div>
+            </td> 
+            <td style="TEXT-ALIGN: right">
+              <div align="center">
+                <input type="checkbox" id="camera_reasons_eventsCheckBox4_{camera_reasons_events:rowNumber}" value="1" name="{CheckBox4_Name}" {CheckBox4}>
+              </div>
+            </td>
+          </tr>
+ <!-- END Row -->
+          <!-- BEGIN NoRecords -->
+          <tr class="NoRecords">
+            <td colspan="5"><strong><font color="#ff0000">No Hay Registros</font></strong></td>
+          </tr>
+          <!-- END NoRecords -->
+          <tr class="Footer">
+            <td colspan="5">
+              <!-- BEGIN Navigator Navigator --><span class="Navigator">{res:CCS_RecPerPage} 
+              <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+                <option selected value="">-</option>
+ {PageSize_Options}
+              </select>
+ 
+              <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/minseg/Images/First.gif"></a> <!-- END First_On -->
+              <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/minseg/Images/FirstOff.gif"><!-- END First_Off -->
+              <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/minseg/Images/Prev.gif"></a> <!-- END Prev_On -->
+              <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/minseg/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} {res:CCS_Of}&nbsp;{Total_Pages}&nbsp; 
+              <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/minseg/Images/Next.gif"></a> <!-- END Next_On -->
+              <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/minseg/Images/NextOff.gif"><!-- END Next_Off -->
+              <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/minseg/Images/Last.gif"></a> <!-- END Last_On -->
+              <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/minseg/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!-- END Grid camera_reasons_events --><br>
+</div>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>gestion perfiles</title>
+<link rel="stylesheet" type="text/css" href="../Styles/common.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+<script>
+function buscar(valor){//busca dato
+	valor = getCleanedString(valor);
+	$("#Panel1tipos_perfilesSearchs_tipo_perfil_id").val('');
+	$("#Panel1tipos_perfilesSearchs_tipo_perfil_descrip").val(valor);
+    if($.isNumeric(valor)){//si el dato es numerico
+        $("#Panel1tipos_perfilesSearchs_tipo_perfil_id").val(valor);
+    }else{//sino es numerico
+        $.ajax({
+            data: {"nombre" : $("#Panel1tipos_perfilesSearchs_tipo_perfil_descrip").val()},
+            type: "GET",
+            url: "buscarperfil.php",
+        })
+         .done(function( data, textStatus, jqXHR ) {
+            $("#Panel1tipos_perfilesSearchs_tipo_perfil_id").val(data);
+        });
+    }
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction(esto) {
+        document.getElementById(esto.name).classList.toggle("show");
+        //console.log(esto.name);
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function getCleanedString(cadena){
+   // Definimos los caracteres que queremos eliminar
+   var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
+
+   // Los eliminamos todos
+   for (var i = 0; i < specialChars.length; i++) {
+       cadena= cadena.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+   }   
+
+   // Quitamos acentos y "ñ". Fijate en que va sin comillas el primer parametro
+   cadena = cadena.replace(/á/gi,"a");
+   cadena = cadena.replace(/é/gi,"e");
+   cadena = cadena.replace(/í/gi,"i");
+   cadena = cadena.replace(/ó/gi,"o");
+   cadena = cadena.replace(/ú/gi,"u");
+   cadena = cadena.replace(/ñ/gi,"n");
+   return cadena;
+}
+
+</script>
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-CCFE788A
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Features CSS @1-59C81743
+</script>
+<style type="text/css">
+    .Panel1tipos_perfilesSearchs_tipo_perfil_descrip-autocomplete {
+        max-height: 250px;
+        width: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+<script type="text/javascript">
+//End Features CSS
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-12EB2798
+    $('body').ccsBind(function() {
+        features["Panel1tipos_perfilesSearchs_tipo_perfil_descripAutocomplete2"] = $('*:ccsControl(Panel1, tipos_perfilesSearch, s_tipo_perfil_descrip)');
+        features["Panel1Panel3Dialog1"] = $('*:ccsControl(Panel1, Panel3)');
+        features["Panel1UpdatePanel1"] = $('*:ccsControl(Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-BBD419E8
+    params["Panel1tipos_perfilesSearchs_tipo_perfil_descripAutocomplete2"] = { 
+        template: '{@text}',
+        customCssClassName: "Panel1tipos_perfilesSearchs_tipo_perfil_descrip-autocomplete",
+        source: "../services/modulo_perfiles_gestion_perfiles_s_tipo_perfil_descrip_Autocomplete1.php"
+    };
+    params["Panel1Panel3Dialog1"] = { 
+        title: "Perfiles",
+        modal: true,
+        width: 250,
+        height: 150,
+        autoOpen: false
+    };
+    params["Panel1UpdatePanel1"] = {
+        name: "Panel1"
+    };
+//End Feature Parameters
+
+//Feature Init @1-9F36EDDE
+    features["Panel1tipos_perfilesSearchs_tipo_perfil_descripAutocomplete2"].ccsBind(function() {
+        this.ccsAutoComplete(params["Panel1tipos_perfilesSearchs_tipo_perfil_descripAutocomplete2"]);
+    });
+    features["Panel1Panel3Dialog1"].ccsBind(function() {
+        this.ccsDialog(params["Panel1Panel3Dialog1"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["Panel1UpdatePanel1"]);
+    });
+//End Feature Init
+
+//Dialog1 show Entry Point @96-B12A93E6
+    actions["Panel1Panel3Dialog1_show"] = function () {
+        features["Panel1Panel3Dialog1"].ccsDialog("show");
+        return false;
+    };
+//End Dialog1 show Entry Point
+
+//Dialog1 hide Entry Point @96-0EA66EC9
+    actions["Panel1Panel3Dialog1_hide"] = function () {
+        features["Panel1Panel3Dialog1"].ccsDialog("hide");
+    };
+//End Dialog1 hide Entry Point
+
+//Event Binding @1-73D5F8A8
+    $('*:ccsControl(Panel1, tipos_perfiles, tipo_perfil_id)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3Dialog1_show"]);
+    });
+    $('*:ccsControl(Panel1, tipos_perfiles, tipos_perfiles_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3Dialog1_show"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, tipos_perfiles1)').ccsBind(function() {
+        this.bind("submit", actions["Panel1Panel3Dialog1_hide"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-B217A959
+    $('*:ccsControl(Panel1, tipos_perfilesSearch, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel3, tipos_perfiles1, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel3, tipos_perfiles1, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body>
+<!-- BEGIN Panel Panel1 -->
+<!-- BEGIN Panel Panel3 -->
+<!-- BEGIN Record tipos_perfiles1 -->
+<form id="Panel1Panel3tipos_perfiles1" method="post" name="{HTMLFormName}" action="{Action}">
+  <table cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table>
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr>
+            <td class="th"><label for="Panel1Panel3tipos_perfiles1tipo_perfil_descrip">Descripcion</label></td> 
+            <td><input type="text" id="Panel1Panel3tipos_perfiles1tipo_perfil_descrip" maxlength="32" size="32" value="{tipo_perfil_descrip}" name="{tipo_perfil_descrip_Name}"></td>
+          </tr>
+ 
+          <tr>
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Panel1Panel3tipos_perfiles1Button_Insert" class="dropbtn" alt="Agregar" value="Agregar" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="Panel1Panel3tipos_perfiles1Button_Update" class="dropbtn" alt="Enviar" value="Enviar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="Panel1Panel3tipos_perfiles1Button_Delete" class="dropbtn" alt="Borrar" value="Borrar" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1Panel3tipos_perfiles1Button_Cancel" class="dropbtn" alt="Cancelar" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record tipos_perfiles1 --><!-- END Panel Panel3 -->
+<!-- BEGIN Record tipos_perfilesSearch -->
+<form id="Panel1tipos_perfilesSearch" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="5">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td width="100">
+              <!-- BEGIN TextBox s_tipo_perfil_id --><input type="text" id="Panel1tipos_perfilesSearchs_tipo_perfil_id" style="HEIGHT: 20px; WIDTH: 87px; FONT-WEIGHT: bold; TEXT-ALIGN: center; BACKGROUND-COLOR: #fcf5d8" maxlength="4" size="4" value="{s_tipo_perfil_id}" name="{s_tipo_perfil_id_Name}"><!-- END TextBox s_tipo_perfil_id --></td> 
+            <td style="TEXT-ALIGN: center" width="105"><label for="Panel1tipos_perfilesSearchs_tipo_perfil_descrip"><strong>ID o Descripción</strong></label></td> 
+            <td>
+              <!-- BEGIN TextBox s_tipo_perfil_descrip --><input type="text" onkeyup="buscar(this.value);" onblur="buscar(this.value);" id="Panel1tipos_perfilesSearchs_tipo_perfil_descrip" style="HEIGHT: 20px; WIDTH: 99%" maxlength="32" size="32" value="{s_tipo_perfil_descrip}" name="{s_tipo_perfil_descrip_Name}"><!-- END TextBox s_tipo_perfil_descrip --></td> 
+            <td width="50">
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Panel1tipos_perfilesSearchButton_DoSearch" class="dropbtn" alt="Buscar" value="Buscar" name="{Button_Name}"><!-- END Button Button_DoSearch --></td> 
+            <td width="50">
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1tipos_perfilesSearchButton_Cancel" class="dropbtn" alt="Button1" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record tipos_perfilesSearch -->
+<!-- BEGIN Grid tipos_perfiles -->
+<table id="Panel1tipos_perfiles" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th colspan="2" scope="col">
+          <div class="dropdown">
+            <button onclick="myFunction(this)" class="dropbtn" style="WIDTH: 72px; PADDING-BOTTOM: 4px" name="myDropdown"><img style="MARGIN-TOP: 0px" alt="" src="../iconos/mas.png" width="12" align="left" height="12">Añadir</button> 
+            <div id="myDropdown" class="dropdown-content">
+<a href="{tipos_perfiles_Insert_Src}" id="Panel1tipos_perfilestipos_perfiles_Insert"><font color="#0059b2">Agregar Nuevo</font></a> 
+            </div>
+          </div>
+          </th>
+        </tr>
+ 
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_tipo_perfil_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1tipos_perfilesSorter_tipo_perfil_id">ID</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_tipo_perfil_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_tipo_perfil_descrip --><span class="Sorter"><a href="{Sort_URL}" id="Panel1tipos_perfilesSorter_tipo_perfil_descrip">Descripcion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_tipo_perfil_descrip --></th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td style="TEXT-ALIGN: right"><a href="{tipo_perfil_id_Src}" id="Panel1tipos_perfilestipo_perfil_id_{tipos_perfiles:rowNumber}">{tipo_perfil_id}</a></td> 
+          <td>{tipo_perfil_descrip}</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="2">No hay registros</td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="2">&nbsp; 
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/Simple/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/Simple/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/Simple/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/Simple/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} de&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/Simple/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/Simple/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/Simple/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/Simple/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid tipos_perfiles --><!-- END Panel Panel1 -->
+</body>
+</html>

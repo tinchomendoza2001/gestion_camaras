@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Provision</title>
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/Style_doctype.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-9956C3BB
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/minseg/jquery-ui.css">
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-5A541DE7
+    $('body').ccsBind(function() {
+        features["Panel1Panel2DialogPanel1"] = $('*:ccsControl(Panel1, Panel2)');
+        features["Panel1UpdatePanel1"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_show"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_hide"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_link_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_submit_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_others_Condition"] = $('*:ccsControl(Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-9CD3C8BD
+    params["Panel1Panel2DialogPanel1"] = { 
+        title: "Tipo de Provision",
+        modal: true,
+        autoOpen: false
+    };
+    params["Panel1UpdatePanel1"] = {
+        name: "Panel1"
+    };
+//End Feature Parameters
+
+//Feature Init @1-480F954F
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.ccsDialog(params["Panel1Panel2DialogPanel1"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["Panel1UpdatePanel1"]);
+    });
+//End Feature Init
+
+//DialogPanel1 show Entry Point @49-C665C449
+    actions["Panel1Panel2DialogPanel1_show"] = function () {
+        features["Panel1Panel2DialogPanel1"].ccsDialog("show");
+        return false;
+    };
+//End DialogPanel1 show Entry Point
+
+//DialogPanel1 hide Entry Point @49-C5416BBC
+    actions["Panel1Panel2DialogPanel1_hide"] = function () {
+        features["Panel1Panel2DialogPanel1"].ccsDialog("hide");
+    };
+//End DialogPanel1 hide Entry Point
+
+//condition_for_show start Entry Point Start @22-4617342F
+    actions["Panel1condition_for_show_start"] = function (eventType, parameters) {
+//End condition_for_show start Entry Point Start
+
+//condition_for_show start Entry Point Body @22-F9058955
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "link")) {
+            self.trigger($.Event("true.condition_for_show"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_show"), {});
+        }
+//End condition_for_show start Entry Point Body
+
+//condition_for_show start Entry Point End @22-6A43FC60
+    };
+//End condition_for_show start Entry Point End
+
+//condition_for_hide start Entry Point Start @27-5A53631F
+    actions["Panel1condition_for_hide_start"] = function (eventType, parameters) {
+//End condition_for_hide start Entry Point Start
+
+//condition_for_hide start Entry Point Body @27-4B4C4DB5
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "submit" && $("#ErrorBlock").length == 0)) {
+            self.trigger($.Event("true.condition_for_hide"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_hide"), {});
+        }
+//End condition_for_hide start Entry Point Body
+
+//condition_for_hide start Entry Point End @27-6A43FC60
+    };
+//End condition_for_hide start Entry Point End
+
+//ccc_link_Condition start Entry Point Start @32-505B3325
+    actions["Panel1ccc_link_Condition_start"] = function (eventType, parameters) {
+//End ccc_link_Condition start Entry Point Start
+
+//ccc_link_Condition start Entry Point Body @32-4B8521D3
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "link")) {
+            self.trigger($.Event("true.ccc_link_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_link_Condition"), {});
+        }
+//End ccc_link_Condition start Entry Point Body
+
+//ccc_link_Condition start Entry Point End @32-6A43FC60
+    };
+//End ccc_link_Condition start Entry Point End
+
+//ccc_submit_Condition start Entry Point Start @43-D5BAC60E
+    actions["Panel1ccc_submit_Condition_start"] = function (eventType, parameters) {
+//End ccc_submit_Condition start Entry Point Start
+
+//ccc_submit_Condition start Entry Point Body @43-D25EF30D
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "submit")) {
+            self.trigger($.Event("true.ccc_submit_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_submit_Condition"), {});
+        }
+//End ccc_submit_Condition start Entry Point Body
+
+//ccc_submit_Condition start Entry Point End @43-6A43FC60
+    };
+//End ccc_submit_Condition start Entry Point End
+
+//ccc_others_Condition start Entry Point Start @58-52A5E8CF
+    actions["Panel1ccc_others_Condition_start"] = function (eventType, parameters) {
+//End ccc_others_Condition start Entry Point Start
+
+//ccc_others_Condition start Entry Point Body @58-D9CD92AF
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "")) {
+            self.trigger($.Event("true.ccc_others_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_others_Condition"), {});
+        }
+//End ccc_others_Condition start Entry Point Body
+
+//ccc_others_Condition start Entry Point End @58-6A43FC60
+    };
+//End ccc_others_Condition start Entry Point End
+
+//Event Binding @1-C9102C2D
+    features["Panel1condition_for_show"].ccsBind(function() {
+        this.bind("true.condition_for_show", actions["Panel1Panel2DialogPanel1_show"]);
+    });
+    features["Panel1condition_for_hide"].ccsBind(function() {
+        this.bind("true.condition_for_hide", actions["Panel1Panel2DialogPanel1_hide"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_show_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_hide_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("show.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("hide.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, camera_provisions_types, camera_provisions_types_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, camera_provisions_types, description)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel2, camera_provisions_types1)').ccsBind(function() {
+        this.bind("submit", actions["Panel1ccc_submit_Condition_start"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-A78175B0
+    $('*:ccsControl(Panel1, Panel2, camera_provisions_types1, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+</head>
+<body class="claro {app_environment_class}">
+{mymenu}
+<p>
+<!-- BEGIN Panel Panel1 -->
+<!-- BEGIN Grid camera_provisions_types -->
+<table id="Panel1camera_provisions_types" class="MainTable" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+          <td class="th"><strong>Lista de Tipos de Provisiones</strong></td> 
+          <td class="HeaderRight"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+        </tr>
+ 
+      </table>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">
+          <p align="center">&nbsp;&nbsp;<a href="{camera_provisions_types_Insert_Src}" id="Panel1camera_provisions_typescamera_provisions_types_Insert"><font color="#0000f7">Agregar Nuevo</font></a>&nbsp; </p>
+ </th>
+ 
+        </tr>
+ 
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_description --><span class="Sorter"><a href="{Sort_URL}" id="Panel1camera_provisions_typesSorter_description">Descripcion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/minseg/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/minseg/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_description --></th>
+ 
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td><a href="{description_Src}" id="Panel1camera_provisions_typesdescription_{camera_provisions_types:rowNumber}">{description}</a>&nbsp;</td> 
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td><font color="#ff0000" size="3"><strong>No hay Registros</strong></font></td> 
+        </tr>
+ <!-- END NoRecords -->
+        <tr class="Footer">
+          <td>
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options} 
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/minseg/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/minseg/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/minseg/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/minseg/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} de&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/minseg/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/minseg/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/minseg/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/minseg/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td> 
+        </tr>
+ 
+      </table>
+ </td> 
+  </tr>
+</table>
+<!-- END Grid camera_provisions_types --><br>
+<!-- BEGIN Panel Panel2 -->
+<!-- BEGIN Record camera_provisions_types1 -->
+<form id="Panel1Panel2camera_provisions_types1" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td valign="top">
+        <table class="Header" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="HeaderLeft"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+            <td class="th"><strong>Tipo de Provision</strong></td> 
+            <td class="HeaderRight"><img alt="" src="../Styles/minseg/Images/Spacer.gif"></td> 
+          </tr>
+ 
+        </table>
+ 
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2"><strong><font size="3">{Error}</font></strong></td> 
+          </tr>
+ <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel2camera_provisions_types1description">Descripcion</label></td> 
+            <td><input type="text" id="Panel1Panel2camera_provisions_types1description" value="{description}" maxlength="64" size="50" name="{description_Name}"></td> 
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Panel1Panel2camera_provisions_types1Button_Insert" class="Button" value="Agregar" alt="Agregar" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="Panel1Panel2camera_provisions_types1Button_Update" class="Button" value="Actualizar" alt="Enviar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1Panel2camera_provisions_types1Button_Cancel" class="Button" value="Cancelar" alt="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td> 
+          </tr>
+ 
+        </table>
+ </td> 
+    </tr>
+ 
+  </table>
+</form>
+<!-- END Record camera_provisions_types1 --><!-- END Panel Panel2 --><br>
+<!-- END Panel Panel1 --></p>
+</body>
+</html>

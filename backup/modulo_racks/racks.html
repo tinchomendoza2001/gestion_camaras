@@ -1,0 +1,821 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Modulo Racks</title>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+</head>
+<body>
+<style>
+center > font > small {
+        display: none !important;
+}
+iframe {
+    border: none;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+        background: #677D91; /* For browsers that do not support gradients */
+    background: linear-gradient(#91A1B0, #5D7183);
+    background: -moz-linear-gradient(#91A1B0, #5D7183); /* For Firefox 3.6 to 15 */
+    color: white;
+    padding: 6px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    min-width: 70px;
+}
+
+.dropbtn:hover  {
+    /*background-color: #c1d6f1;*/
+    min-width: 70px;
+    color: #fff;
+        background: #cce0ff; /* For browsers that do not support gradients */
+    background: -moz-linear-gradient(#5D7183, #91A1B0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#5D7183, #91A1B0); /* Standard syntax (must be last) */
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+</style>
+<script>
+function buscar(valor){
+    if($.isNumeric(valor)){     // Si es numerico               
+           // Realiza ajax para saber si el ID existe
+            $.ajax({
+                type: "GET",
+                url: "buscarracks.php?nombreid="+valor,
+                success: function( data ) {
+                                if(data){
+                                $("#Panel1racksSearchs_rack_id").val(data);
+                                } else{
+                                        $("#Panel1racksSearchs_rack_id").val('');
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "buscarracksserie.php?nombreserie="+valor,
+                                                success: function( data ) {
+                                                                if(data){
+                                                                $("#Panel1racksSearchs_rack_id").val(data);
+                                                        } else{
+                                                                //informar que no hay nada por traer
+                                                                $("#Panel1racksSearchs_rack_id").val('');
+                                                        }
+                                                },
+                                                error: (function( data ) {      
+                                                                                        console.log("Error en ajax");
+                                                        })
+                                            })                                  
+                                }
+                },
+                error: (function( data ) {      
+                                                console.log("Error en ajax");
+                        })
+            })              
+    } else{ //sino es numerico
+           $("#Panel1racksSearchs_rack_id").val('');
+    }
+    
+    /*$texto = $proveedoresSearch->s_proveedor_razon_social->GetValue();
+    $id = $proveedoresSearch->s_proveedor_razon_social->GetValue();
+    $db = new clsDBminseg();
+    if(is_numeric($texto)){
+        $existe = CCDLookUp("COUNT(*)","proveedores","proveedor_id=$texto",$db);
+        if(!$existe){
+                $proveedoresSearch->Errors->addError("No existe Proveedor Buscado");
+        }
+    }else{
+        $existe = CCDLookUp("COUNT(*)","proveedores","proveedor_razon_social LIKE '%$texto%'",$db);
+        if($existe > 1){
+                $proveedoresSearch->Errors->addError("Existe más de un proveedor para la carga. Elejir de la lista el proveedor.");
+        }elseif(!$existe){
+                $proveedoresSearch->Errors->addError("No existe Proveedor Buscado");
+        }
+    }   */
+   
+}
+
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction(esto) {
+        document.getElementById(esto.name).classList.toggle("show");
+        //console.log(esto.name);
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-CCFE788A
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Features CSS @1-BB5FF8A2
+</script>
+<style type="text/css">
+    .Panel1racksSearchs_num_serie-autocomplete {
+        max-height: 250px;
+        width: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+<script type="text/javascript">
+//End Features CSS
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-AECEE4E2
+    $('body').ccsBind(function() {
+        features["Panel1racksSearchs_num_serieJAutocomplete1"] = $('*:ccsControl(Panel1, racksSearch, s_num_serie)');
+        features["Panel1Panel2DialogPanel1"] = $('*:ccsControl(Panel1, Panel2)');
+        features["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"] = $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4, Panel6)');
+        features["Panel1Panel3ProveedorPanel4condition_for_show1"] = $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4)');
+        features["Panel1Panel3ProveedorPanel4condition_for_hide1"] = $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4)');
+        features["Panel1Panel3ProveedorPanel4ccc_link_Condition1"] = $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4)');
+        features["Panel1Panel3ProveedorPanel4ccc_submit_Condition1"] = $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4)');
+        features["Panel1Panel3ProveedorPanel4ccc_others_Condition1"] = $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4)');
+        features["Panel1Panel3ProveedorTabbedTab1"] = $('*:ccsControl(Panel1, Panel3, Proveedor)');
+        features["Panel1Panel3Panel5TabbedTab2"] = $('*:ccsControl(Panel1, Panel3, Panel5)');
+        features["Panel1Panel3TabbedView1"] = $('*:ccsControl(Panel1, Panel3)');
+        features["Panel1UpdatePanel1"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_show"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_hide"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_link_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_submit_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_others_Condition"] = $('*:ccsControl(Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-C9DEF8B8
+    params["Panel1racksSearchs_num_serieJAutocomplete1"] = { 
+        template: '{@text}',
+        value: "label",
+        customCssClassName: "Panel1racksSearchs_num_serie-autocomplete",
+        source: "../services/modulo_racks_racks_racksSearch_s_num_serie_JAutocomplete1.php"
+    };
+    params["Panel1Panel2DialogPanel1"] = { 
+        title: "Agregar/Editar Racks ",
+        modal: true,
+        autoOpen: false
+    };
+    params["Panel1Panel3TabbedView1"] = { 
+        tabs: [
+            { selector: '*:ccsControl(Panel1, Panel3, Panel5)', caption: "Racks" },
+            { selector: '*:ccsControl(Panel1, Panel3, Proveedor)', caption: "Proveedor" }
+        ]
+    };
+    params["Panel1UpdatePanel1"] = {
+        name: "Panel1"
+    };
+//End Feature Parameters
+
+//Feature Init @1-DF126F0B
+    features["Panel1racksSearchs_num_serieJAutocomplete1"].ccsBind(function() {
+        this.ccsAutoComplete(params["Panel1racksSearchs_num_serieJAutocomplete1"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.ccsDialog(params["Panel1Panel2DialogPanel1"]);
+    });
+    features["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"].ccsBind(function() {
+        this.ccsDialog(params["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"]);
+    });
+    features["Panel1Panel3TabbedView1"].ccsBind(function() {
+        this.ccsTabs(params["Panel1Panel3TabbedView1"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["Panel1UpdatePanel1"]);
+    });
+//End Feature Init
+
+//DialogPanel2 show Entry Point @270-166E161A
+    actions["Panel1Panel3ProveedorPanel4Panel6DialogPanel2_show"] = function () {
+        features["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"].ccsDialog("show");
+        return false;
+    };
+//End DialogPanel2 show Entry Point
+
+//DialogPanel2 hide Entry Point @270-F8E690A3
+    actions["Panel1Panel3ProveedorPanel4Panel6DialogPanel2_hide"] = function () {
+        features["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"].ccsDialog("hide");
+    };
+//End DialogPanel2 hide Entry Point
+
+//condition_for_show1 start Entry Point Start @234-AE78BF1E
+    actions["Panel1Panel3ProveedorPanel4condition_for_show1_start"] = function (eventType, parameters) {
+//End condition_for_show1 start Entry Point Start
+
+//condition_for_show1 start Entry Point Body @234-9297127F
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1, Panel3, Proveedor, Panel4)");
+        if (true==(params["click"] == "link")) {
+            self.trigger($.Event("true.condition_for_show1"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_show1"), {});
+        }
+//End condition_for_show1 start Entry Point Body
+
+//condition_for_show1 start Entry Point End @234-6A43FC60
+    };
+//End condition_for_show1 start Entry Point End
+
+//condition_for_hide1 start Entry Point Start @239-88BDCBE5
+    actions["Panel1Panel3ProveedorPanel4condition_for_hide1_start"] = function (eventType, parameters) {
+//End condition_for_hide1 start Entry Point Start
+
+//condition_for_hide1 start Entry Point Body @239-ACBAC199
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1, Panel3, Proveedor, Panel4)");
+        if (true==(params["click"] == "submit" && $("#ErrorBlock").length == 0)) {
+            self.trigger($.Event("true.condition_for_hide1"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_hide1"), {});
+        }
+//End condition_for_hide1 start Entry Point Body
+
+//condition_for_hide1 start Entry Point End @239-6A43FC60
+    };
+//End condition_for_hide1 start Entry Point End
+
+//ccc_link_Condition1 start Entry Point Start @244-4EBB1A07
+    actions["Panel1Panel3ProveedorPanel4ccc_link_Condition1_start"] = function (eventType, parameters) {
+//End ccc_link_Condition1 start Entry Point Start
+
+//ccc_link_Condition1 start Entry Point Body @244-AA7A8FDF
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1, Panel3, Proveedor, Panel4)");
+        if (true==(params["click"] = "link")) {
+            self.trigger($.Event("true.ccc_link_Condition1"), {});
+        } else {
+            self.trigger($.Event("false.ccc_link_Condition1"), {});
+        }
+//End ccc_link_Condition1 start Entry Point Body
+
+//ccc_link_Condition1 start Entry Point End @244-6A43FC60
+    };
+//End ccc_link_Condition1 start Entry Point End
+
+//ccc_submit_Condition1 start Entry Point Start @261-5DB4FE1B
+    actions["Panel1Panel3ProveedorPanel4ccc_submit_Condition1_start"] = function (eventType, parameters) {
+//End ccc_submit_Condition1 start Entry Point Start
+
+//ccc_submit_Condition1 start Entry Point Body @261-58C175A5
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1, Panel3, Proveedor, Panel4)");
+        if (true==(params["click"] = "submit")) {
+            self.trigger($.Event("true.ccc_submit_Condition1"), {});
+        } else {
+            self.trigger($.Event("false.ccc_submit_Condition1"), {});
+        }
+//End ccc_submit_Condition1 start Entry Point Body
+
+//ccc_submit_Condition1 start Entry Point End @261-6A43FC60
+    };
+//End ccc_submit_Condition1 start Entry Point End
+
+//ccc_others_Condition1 start Entry Point Start @285-B1501313
+    actions["Panel1Panel3ProveedorPanel4ccc_others_Condition1_start"] = function (eventType, parameters) {
+//End ccc_others_Condition1 start Entry Point Start
+
+//ccc_others_Condition1 start Entry Point Body @285-3A739BE7
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1, Panel3, Proveedor, Panel4)");
+        if (true==(params["click"] = "")) {
+            self.trigger($.Event("true.ccc_others_Condition1"), {});
+        } else {
+            self.trigger($.Event("false.ccc_others_Condition1"), {});
+        }
+//End ccc_others_Condition1 start Entry Point Body
+
+//ccc_others_Condition1 start Entry Point End @285-6A43FC60
+    };
+//End ccc_others_Condition1 start Entry Point End
+
+//condition_for_show start Entry Point Start @31-4617342F
+    actions["Panel1condition_for_show_start"] = function (eventType, parameters) {
+//End condition_for_show start Entry Point Start
+
+//condition_for_show start Entry Point Body @31-F9058955
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "link")) {
+            self.trigger($.Event("true.condition_for_show"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_show"), {});
+        }
+//End condition_for_show start Entry Point Body
+
+//condition_for_show start Entry Point End @31-6A43FC60
+    };
+//End condition_for_show start Entry Point End
+
+//condition_for_hide start Entry Point Start @36-5A53631F
+    actions["Panel1condition_for_hide_start"] = function (eventType, parameters) {
+//End condition_for_hide start Entry Point Start
+
+//condition_for_hide start Entry Point Body @36-4B4C4DB5
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "submit" && $("#ErrorBlock").length == 0)) {
+            self.trigger($.Event("true.condition_for_hide"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_hide"), {});
+        }
+//End condition_for_hide start Entry Point Body
+
+//condition_for_hide start Entry Point End @36-6A43FC60
+    };
+//End condition_for_hide start Entry Point End
+
+//ccc_link_Condition start Entry Point Start @41-505B3325
+    actions["Panel1ccc_link_Condition_start"] = function (eventType, parameters) {
+//End ccc_link_Condition start Entry Point Start
+
+//ccc_link_Condition start Entry Point Body @41-4B8521D3
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "link")) {
+            self.trigger($.Event("true.ccc_link_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_link_Condition"), {});
+        }
+//End ccc_link_Condition start Entry Point Body
+
+//ccc_link_Condition start Entry Point End @41-6A43FC60
+    };
+//End ccc_link_Condition start Entry Point End
+
+//ccc_submit_Condition start Entry Point Start @52-D5BAC60E
+    actions["Panel1ccc_submit_Condition_start"] = function (eventType, parameters) {
+//End ccc_submit_Condition start Entry Point Start
+
+//ccc_submit_Condition start Entry Point Body @52-D25EF30D
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "submit")) {
+            self.trigger($.Event("true.ccc_submit_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_submit_Condition"), {});
+        }
+//End ccc_submit_Condition start Entry Point Body
+
+//ccc_submit_Condition start Entry Point End @52-6A43FC60
+    };
+//End ccc_submit_Condition start Entry Point End
+
+//ccc_others_Condition start Entry Point Start @67-52A5E8CF
+    actions["Panel1ccc_others_Condition_start"] = function (eventType, parameters) {
+//End ccc_others_Condition start Entry Point Start
+
+//ccc_others_Condition start Entry Point Body @67-D9CD92AF
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "")) {
+            self.trigger($.Event("true.ccc_others_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_others_Condition"), {});
+        }
+//End ccc_others_Condition start Entry Point Body
+
+//ccc_others_Condition start Entry Point End @67-6A43FC60
+    };
+//End ccc_others_Condition start Entry Point End
+
+//Panel1Panel3Panel5racks2Button_InsertOnClick Event Start @-6F85EC46
+    actions["Panel1Panel3Panel5racks2Button_InsertOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End Panel1Panel3Panel5racks2Button_InsertOnClick Event Start
+
+//Confirmation Message @333-95E112AE
+        return confirm('¿Desea agregar un nuevo rack?');
+//End Confirmation Message
+
+//Panel1Panel3Panel5racks2Button_InsertOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End Panel1Panel3Panel5racks2Button_InsertOnClick Event End
+
+//Panel1Panel3Panel5racks2Button_UpdateOnClick Event Start @-BE88E11E
+    actions["Panel1Panel3Panel5racks2Button_UpdateOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End Panel1Panel3Panel5racks2Button_UpdateOnClick Event Start
+
+//Confirmation Message @334-95E112AE
+        return confirm('¿Proceder con la actualización del registro?');
+//End Confirmation Message
+
+//Panel1Panel3Panel5racks2Button_UpdateOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End Panel1Panel3Panel5racks2Button_UpdateOnClick Event End
+
+//Panel1Panel3Panel5racks2Button_DeleteOnClick Event Start @-CC03E86F
+    actions["Panel1Panel3Panel5racks2Button_DeleteOnClick"] = function (eventType, parameters) {
+        var result = true;
+//End Panel1Panel3Panel5racks2Button_DeleteOnClick Event Start
+
+//Confirmation Message @26-BED55CD3
+        return confirm('¿Borrar registro de forma permanente?');
+//End Confirmation Message
+
+//Panel1Panel3Panel5racks2Button_DeleteOnClick Event End @-A5B9ECB8
+        return result;
+    };
+//End Panel1Panel3Panel5racks2Button_DeleteOnClick Event End
+
+//Event Binding @1-CAC3EDAF
+    features["Panel1Panel3ProveedorPanel4condition_for_show1"].ccsBind(function() {
+        this.bind("true.condition_for_show1", actions["Panel1Panel3ProveedorPanel4Panel6DialogPanel2_show"]);
+    });
+    features["Panel1Panel3ProveedorPanel4condition_for_hide1"].ccsBind(function() {
+        this.bind("true.condition_for_hide1", actions["Panel1Panel3ProveedorPanel4Panel6DialogPanel2_hide"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1Panel3ProveedorPanel4condition_for_show1_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1Panel3ProveedorPanel4condition_for_hide1_start"]);
+    });
+    features["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"].ccsBind(function() {
+        this.bind("show.ccsDialog", actions["Panel1Panel3ProveedorPanel4ccc_others_Condition1_start"]);
+    });
+    features["Panel1Panel3ProveedorPanel4Panel6DialogPanel2"].ccsBind(function() {
+        this.bind("hide.ccsDialog", actions["Panel1Panel3ProveedorPanel4ccc_others_Condition1_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_show_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_hide_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("show.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("hide.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4, proveedores1, proveedores1_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3ProveedorPanel4ccc_link_Condition1_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4, proveedores1, proveedor_razon_social)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3ProveedorPanel4ccc_link_Condition1_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4, Panel6, proveedores2)').ccsBind(function() {
+        this.bind("submit", actions["Panel1Panel3ProveedorPanel4ccc_submit_Condition1_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4, proveedores1, racks1_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks1, rack_id)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks2)').ccsBind(function() {
+        this.bind("submit", actions["Panel1ccc_submit_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks2, Button_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3Panel5racks2Button_InsertOnClick"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks2, Button_Update)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3Panel5racks2Button_UpdateOnClick"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks2, Button_Delete)').ccsBind(function() {
+        this.bind("click", actions["Panel1Panel3Panel5racks2Button_DeleteOnClick"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-9AF75FDD
+    $('*:ccsControl(Panel1, racksSearch, Button1)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel3, Proveedor, Panel4, Panel6, proveedores2, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks2, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel5, racks2, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<!-- BEGIN Panel Panel1 -->
+<!-- BEGIN Record racksSearch -->
+<form id="Panel1racksSearch" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="5"><font size="3"><strong>{Error}</strong></font></td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td width="100"><label for="Panel1racksSearchs_rack_id">&nbsp;</label><input type="text" id="Panel1racksSearchs_rack_id" style="HEIGHT: 20px; WIDTH: 87px; FONT-WEIGHT: bold; TEXT-ALIGN: center; BACKGROUND-COLOR: #fcf5d8" readonly maxlength="10" size="8" value="{s_rack_id}" name="{s_rack_id_Name}"></td> 
+            <td style="TEXT-ALIGN: center" width="105"><label for="Panel1racksSearchs_num_serie"><strong>ID o Nº de Serie</strong></label></td> 
+            <td>
+              <!-- BEGIN TextBox s_num_serie --><input type="text" onkeyup="buscar(this.value);" onblur="buscar(this.value);" id="Panel1racksSearchs_num_serie" style="HEIGHT: 20px; WIDTH: 99.5%" maxlength="64" size="152" value="{s_num_serie}" name="{s_num_serie_Name}"><!-- END TextBox s_num_serie --></td> 
+            <td width="50">
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Panel1racksSearchButton_DoSearch" class="dropbtn" alt="Buscar" value="Buscar" name="{Button_Name}"><!-- END Button Button_DoSearch --></td> 
+            <td width="50">
+              <!-- BEGIN Button Button1 --><input type="submit" id="Panel1racksSearchButton1" class="dropbtn" alt="Button1" value="Cancelar" name="{Button_Name}"><!-- END Button Button1 --></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="5"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record racksSearch -->
+<!-- BEGIN Panel Panel2 --><!-- END Panel Panel2 -->
+<!-- BEGIN Panel Panel3 -->
+<!-- BEGIN Panel Panel5 -->
+<!-- BEGIN Record racks2 -->
+<form id="Panel1Panel3Panel5racks2" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2"><strong><font size="3">{Error}</font></strong></td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th" style="TEXT-ALIGN: center" width="15%"><label for="Panel1Panel3Panel5racks2num_serie"><strong>Número de Serie</strong></label></td> 
+            <td><input type="text" id="Panel1Panel3Panel5racks2num_serie" style="HEIGHT: 20px; WIDTH: 99.5%" maxlength="10" size="5" value="{num_serie}" name="{num_serie_Name}"></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2"><input type="hidden" id="Panel1Panel3Panel5racks2fecha_modif" value="{fecha_modif}" name="{fecha_modif_Name}"><input type="hidden" id="Panel1Panel3Panel5racks2fecha_creac" value="{fecha_creac}" name="{fecha_creac_Name}">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Panel1Panel3Panel5racks2Button_Insert" class="dropbtn" alt="Agregar" value="Agregar Rack" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="Panel1Panel3Panel5racks2Button_Update" class="dropbtn" alt="Enviar" value="Actualizar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="Panel1Panel3Panel5racks2Button_Delete" class="dropbtn" alt="Borrar" value="Borrar" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1Panel3Panel5racks2Button_Cancel" class="dropbtn" alt="Cancelar" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record racks2 -->
+<!-- BEGIN Grid racks1 -->
+<table id="Panel1Panel3Panel5racks1" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="../Styles/Simple/Images/Spacer.gif"></td> 
+          <td class="th">
+            <div align="center">
+              <strong>Lista de Racks</strong> 
+            </div>
+          </td> 
+          <td class="HeaderRight"><img alt="" src="../Styles/Simple/Images/Spacer.gif"></td>
+        </tr>
+      </table>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th colspan="2" scope="col"></th>
+        </tr>
+ 
+        <tr class="Caption">
+          <th width="50%" scope="col">
+          <div align="center">
+            <!-- BEGIN Sorter Sorter_rack_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel5racks1Sorter_rack_id">ID</a> 
+            <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+            <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_rack_id -->
+          </div>
+          </th>
+ 
+          <th scope="col">
+          <div align="center">
+            <!-- BEGIN Sorter Sorter_num_serie --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel5racks1Sorter_num_serie">Número de Serie</a> 
+            <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+            <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_num_serie -->
+          </div>
+          </th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td style="TEXT-ALIGN: right">
+            <div align="center">
+<a href="{rack_id_Src}" id="Panel1Panel3Panel5racks1rack_id_{racks1:rowNumber}">{rack_id}</a> 
+            </div>
+          </td> 
+          <td style="TEXT-ALIGN: right">
+            <div align="center">
+              {num_serie} 
+            </div>
+          </td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="2"><strong><font color="#ff0000" size="3">No hay registros</font></strong></td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="2">
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/Simple/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/Simple/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/Simple/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/Simple/Images/PrevOff.gif"><!-- END Prev_Off -->{Page_Number}{Total_Pages} 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/Simple/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/Simple/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/Simple/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/Simple/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator --></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid racks1 --><!-- END Panel Panel5 -->
+<!-- BEGIN Panel Proveedor -->
+<!-- BEGIN Panel Panel4 -->
+<!-- BEGIN Grid proveedores1 -->
+<table id="Panel1Panel3ProveedorPanel4proveedores1" class="MainTable" style="HEIGHT: 100%; WIDTH: 100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">
+          <!-- Añadir Proveedor -->
+          <div class="dropdown">
+            <button onclick="myFunction(this)" class="dropbtn" style="WIDTH: 72px; PADDING-BOTTOM: 4px" name="myDropdown"><img style="MARGIN-TOP: 0px" alt="" src="../iconos/mas.png" width="12" align="left" height="12">Añadir</button> 
+            <div id="myDropdown" class="dropdown-content">
+<a href="racks.php?s_rack_id={s_rack_id}&FormFilter=Panel1" onclick="/*VisibilidadBotones(this.name);*/" id="Panel1Panel3ProveedorPanel4proveedores1proveedores1_Insert" name="BotAgregar">Agregar Proveedor</a> 
+            </div>
+          </div>
+          <!-- Eliminar Proveedor -->
+          <div class="dropdown">
+            <button onclick="myFunction(this)" class="dropbtn" style="WIDTH: 72px; PADDING-BOTTOM: 4px" name="myDropdown2"><img style="MARGIN-TOP: 0px" alt="" src="../iconos/menos.png" width="12" align="left" height="12">Eliminar</button> 
+            <div id="myDropdown2" class="dropdown-content">
+<a href="{racks1_Insert_Src}" onclick="/*VisibilidadBotones(this.name);*/" id="Panel1Panel3ProveedorPanel4proveedores1racks1_Insert" name="BotEliminar">Eliminar Proveedor</a> 
+            </div>
+          </div>
+          </th>
+ 
+          <th scope="col">&nbsp;</th>
+        </tr>
+ 
+        <tr class="Caption">
+          <th width="50%" scope="col">
+          <!-- BEGIN Sorter Sorter_proveedor_razon_social --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3ProveedorPanel4proveedores1Sorter_proveedor_razon_social">Proveedor Razon Social</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_proveedor_razon_social --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_proveedor_cuit --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3ProveedorPanel4proveedores1Sorter_proveedor_cuit">Proveedor Cuit</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_proveedor_cuit --></th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td>{proveedor_razon_social}&nbsp;</td> 
+          <td>{proveedor_cuit}&nbsp;</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="2"><font color="#ff0000" size="3"><strong>No hay registros</strong></font></td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="2">
+            <!--<a href="{proveedores1_Insert_Src}" id="Panel1Panel3ProveedorPanel4proveedores1proveedores1_Insert">Agregar Nuevo</a>&nbsp; -->
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/Simple/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/Simple/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/Simple/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/Simple/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} de&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/Simple/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/Simple/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/Simple/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/Simple/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid proveedores1 --><br>
+<!-- BEGIN Panel Panel6 -->
+<!-- BEGIN Record proveedores2 -->
+<form id="Panel1Panel3ProveedorPanel4Panel6proveedores2" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2"><font size="3"><strong>{Error}</strong></font></td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3ProveedorPanel4Panel6proveedores2proveedor_razon_social"><font size="2"><strong>Seleccione un Proveedor</strong></font></label></td> 
+            <td><input id="Panel1Panel3ProveedorPanel4Panel6proveedores2proveedor_razon_social" maxlength="64" value="{razon_social_proveedor}" name="razon_social_proveedor" autocomplete="off"><input id="Panel1Panel3ProveedorPanel4Panel6proveedores2TextBox1" style="DISPLAY: none" value="{s_rack_id}" name="id_rack"></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Panel1Panel3ProveedorPanel4Panel6proveedores2Button_Insert" class="dropbtn" alt="Agregar" value="Agregar" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Borrar --><input type="submit" id="Panel1Panel3ProveedorPanel4Panel6proveedores2Borrar" class="dropbtn" alt="Button1" value="Borrar" name="{Button_Name}"><!-- END Button Borrar -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="Panel1Panel3ProveedorPanel4Panel6proveedores2Button_Delete" class="dropbtn" alt="Borrar" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Delete --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record proveedores2 --><!-- END Panel Panel6 --><br>
+<!-- END Panel Panel4 --><!-- END Panel Proveedor --><!-- END Panel Panel3 --><!-- END Panel Panel1 -->
+<script>
+/*function VisibilidadBotones(esto) {
+
+        if(esto == 'BotAgregar'){
+                //console.log(esto);    
+                document.getElementById('Panel1Panel3ProveedorPanel4Panel6proveedores2Button_Insert').style.visibility = 'visible';
+                document.getElementById('Panel1Panel3ProveedorPanel4Panel6proveedores2Borrar').style.visibility = 'hidden';
+                                                                 
+        } else {
+                //console.log("funciona");
+                document.getElementById('Panel1Panel3ProveedorPanel4Panel6proveedores2Button_Insert').style.visibility = 'hidden';
+                document.getElementById('Panel1Panel3ProveedorPanel4Panel6proveedores2Borrar').style.visibility = 'visible';    }
+}*/
+</script>
+</body>
+</html>

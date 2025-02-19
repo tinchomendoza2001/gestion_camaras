@@ -1,0 +1,537 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Mobiliario</title>
+<link rel="stylesheet" type="text/css" href="../Styles/common.css">
+<script language="JavaScript" type="text/javascript">
+function buscar(valor){//busca dato
+        $("#Panel1mobiliariosSearchs_mobiliario_id").val(valor);
+}
+</script>
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-3A95A256
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/ccs-jquery-ui-calendar.css">
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Features CSS @1-9211A55D
+</script>
+<style type="text/css">
+    .Panel1mobiliariosSearchs_tipo_mobiliario_id-autocomplete {
+        max-height: 250px;
+        width: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+<script type="text/javascript">
+//End Features CSS
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-5F982396
+    $('body').ccsBind(function() {
+        features["Panel1mobiliariosSearchs_tipo_mobiliario_idAutocomplete2"] = $('*:ccsControl(Panel1, mobiliariosSearch, s_tipo_mobiliario_id)');
+        features["Panel1Panel2DialogPanel1"] = $('*:ccsControl(Panel1, Panel2)');
+        features["Panel1Panel3Panel4TabbedTab1"] = $('*:ccsControl(Panel1, Panel3, Panel4)');
+        features["Panel1Panel3Panel5TabbedTab2"] = $('*:ccsControl(Panel1, Panel3, Panel5)');
+        features["Panel1Panel3Panel6TabbedTab3"] = $('*:ccsControl(Panel1, Panel3, Panel6)');
+        features["Panel1Panel3TabbedView1"] = $('*:ccsControl(Panel1, Panel3)');
+        features["Panel1UpdatePanel1"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_show"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_hide"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_link_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_submit_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_others_Condition"] = $('*:ccsControl(Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-7685CA17
+    params["Panel1mobiliariosSearchs_tipo_mobiliario_idAutocomplete2"] = { 
+        template: '{@text}',
+        customCssClassName: "Panel1mobiliariosSearchs_tipo_mobiliario_id-autocomplete",
+        source: "../services/modulo_mobiliario_mobiliario_s_mobiliario_id_Autocomplete1.php"
+    };
+    params["Panel1Panel2DialogPanel1"] = { 
+        title: "Mobiliarios",
+        modal: true,
+        autoOpen: false
+    };
+    params["Panel1Panel3TabbedView1"] = { 
+        tabs: [
+            { selector: '*:ccsControl(Panel1, Panel3, Panel4)', caption: "General" },
+            { selector: '*:ccsControl(Panel1, Panel3, Panel5)', caption: "Info" },
+            { selector: '*:ccsControl(Panel1, Panel3, Panel6)', caption: "Centro Visualizacion" }
+        ]
+    };
+    params["Panel1UpdatePanel1"] = {
+        name: "Panel1"
+    };
+//End Feature Parameters
+
+//Feature Init @1-0641DF82
+    features["Panel1mobiliariosSearchs_tipo_mobiliario_idAutocomplete2"].ccsBind(function() {
+        this.ccsAutoComplete(params["Panel1mobiliariosSearchs_tipo_mobiliario_idAutocomplete2"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.ccsDialog(params["Panel1Panel2DialogPanel1"]);
+    });
+    features["Panel1Panel3TabbedView1"].ccsBind(function() {
+        this.ccsTabs(params["Panel1Panel3TabbedView1"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["Panel1UpdatePanel1"]);
+    });
+//End Feature Init
+
+//DialogPanel1 show Entry Point @92-C665C449
+    actions["Panel1Panel2DialogPanel1_show"] = function () {
+        features["Panel1Panel2DialogPanel1"].ccsDialog("show");
+        return false;
+    };
+//End DialogPanel1 show Entry Point
+
+//DialogPanel1 hide Entry Point @92-C5416BBC
+    actions["Panel1Panel2DialogPanel1_hide"] = function () {
+        features["Panel1Panel2DialogPanel1"].ccsDialog("hide");
+    };
+//End DialogPanel1 hide Entry Point
+
+//condition_for_show start Entry Point Start @65-4617342F
+    actions["Panel1condition_for_show_start"] = function (eventType, parameters) {
+//End condition_for_show start Entry Point Start
+
+//condition_for_show start Entry Point Body @65-F9058955
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "link")) {
+            self.trigger($.Event("true.condition_for_show"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_show"), {});
+        }
+//End condition_for_show start Entry Point Body
+
+//condition_for_show start Entry Point End @65-6A43FC60
+    };
+//End condition_for_show start Entry Point End
+
+//condition_for_hide start Entry Point Start @70-5A53631F
+    actions["Panel1condition_for_hide_start"] = function (eventType, parameters) {
+//End condition_for_hide start Entry Point Start
+
+//condition_for_hide start Entry Point Body @70-4B4C4DB5
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "submit" && $("#ErrorBlock").length == 0)) {
+            self.trigger($.Event("true.condition_for_hide"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_hide"), {});
+        }
+//End condition_for_hide start Entry Point Body
+
+//condition_for_hide start Entry Point End @70-6A43FC60
+    };
+//End condition_for_hide start Entry Point End
+
+//ccc_link_Condition start Entry Point Start @75-505B3325
+    actions["Panel1ccc_link_Condition_start"] = function (eventType, parameters) {
+//End ccc_link_Condition start Entry Point Start
+
+//ccc_link_Condition start Entry Point Body @75-4B8521D3
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "link")) {
+            self.trigger($.Event("true.ccc_link_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_link_Condition"), {});
+        }
+//End ccc_link_Condition start Entry Point Body
+
+//ccc_link_Condition start Entry Point End @75-6A43FC60
+    };
+//End ccc_link_Condition start Entry Point End
+
+//ccc_submit_Condition start Entry Point Start @86-D5BAC60E
+    actions["Panel1ccc_submit_Condition_start"] = function (eventType, parameters) {
+//End ccc_submit_Condition start Entry Point Start
+
+//ccc_submit_Condition start Entry Point Body @86-D25EF30D
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "submit")) {
+            self.trigger($.Event("true.ccc_submit_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_submit_Condition"), {});
+        }
+//End ccc_submit_Condition start Entry Point Body
+
+//ccc_submit_Condition start Entry Point End @86-6A43FC60
+    };
+//End ccc_submit_Condition start Entry Point End
+
+//ccc_others_Condition start Entry Point Start @101-52A5E8CF
+    actions["Panel1ccc_others_Condition_start"] = function (eventType, parameters) {
+//End ccc_others_Condition start Entry Point Start
+
+//ccc_others_Condition start Entry Point Body @101-D9CD92AF
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "")) {
+            self.trigger($.Event("true.ccc_others_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_others_Condition"), {});
+        }
+//End ccc_others_Condition start Entry Point Body
+
+//ccc_others_Condition start Entry Point End @101-6A43FC60
+    };
+//End ccc_others_Condition start Entry Point End
+
+//Event Binding @1-85399AB2
+    features["Panel1condition_for_show"].ccsBind(function() {
+        this.bind("true.condition_for_show", actions["Panel1Panel2DialogPanel1_show"]);
+    });
+    features["Panel1condition_for_hide"].ccsBind(function() {
+        this.bind("true.condition_for_hide", actions["Panel1Panel2DialogPanel1_hide"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_show_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_hide_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("show.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("hide.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel4, mobiliarios2, mobiliarios_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel4, mobiliarios, mobiliario_id)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel2, mobiliarios1)').ccsBind(function() {
+        this.bind("submit", actions["Panel1ccc_submit_Condition_start"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-C2B04BD5
+    $('*:ccsControl(Panel1, mobiliariosSearch, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel2, mobiliarios1, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel2, mobiliarios1, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+</head>
+<body>
+<!-- BEGIN Panel Panel1 -->
+<!-- BEGIN Record mobiliariosSearch -->
+<form id="Panel1mobiliariosSearch" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="5">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td width="100">
+              <!-- BEGIN TextBox s_mobiliario_id --><input type="text" id="Panel1mobiliariosSearchs_mobiliario_id" readonly maxlength="20" value="{s_mobiliario_id}" name="{s_mobiliario_id_Name}" size="20"><!-- END TextBox s_mobiliario_id --></td> 
+            <td class="th" width="100"><label for="Panel1mobiliariosSearchs_tipo_mobiliario_id">ID</label></td> 
+            <td>
+              <!-- BEGIN TextBox s_tipo_mobiliario_id --><input type="text" onkeyup="buscar(this.value);" onblur="buscar(this.value);" id="Panel1mobiliariosSearchs_tipo_mobiliario_id" maxlength="10" size="10" value="{s_tipo_mobiliario_id}" name="{s_tipo_mobiliario_id_Name}"><!-- END TextBox s_tipo_mobiliario_id --></td> 
+            <td class="th" width="50">
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Panel1mobiliariosSearchButton_DoSearch" class="Button" alt="Buscar" value="Buscar" name="{Button_Name}"><!-- END Button Button_DoSearch --></td> 
+            <td width="50">
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1mobiliariosSearchButton_Cancel" class="Button" alt="Button1" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="5"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record mobiliariosSearch -->
+<!-- BEGIN Panel Panel2 -->
+<!-- BEGIN Record mobiliarios1 -->
+<form id="Panel1Panel2mobiliarios1" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel2mobiliarios1tipo_mobiliario_id">Tipo Mobiliario</label></td> 
+            <td>
+              <select id="Panel1Panel2mobiliarios1tipo_mobiliario_id" name="{tipo_mobiliario_id_Name}">
+                <option selected value="">...</option>
+                {tipo_mobiliario_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel2mobiliarios1tipo_estado_mobiliario_id">Estado</label></td> 
+            <td>
+              <select id="Panel1Panel2mobiliarios1tipo_estado_mobiliario_id" name="{tipo_estado_mobiliario_id_Name}">
+                <option selected value="">...</option>
+                {tipo_estado_mobiliario_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel2mobiliarios1proveedor_mantenimiento_id">Proveedor Mantenimiento</label></td> 
+            <td>
+              <select id="Panel1Panel2mobiliarios1proveedor_mantenimiento_id" name="{proveedor_mantenimiento_id_Name}">
+                <option selected value="">...</option>
+                {proveedor_mantenimiento_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel2mobiliarios1centro_visualizacion_id">Centro Visualizacion</label></td> 
+            <td>
+              <select id="Panel1Panel2mobiliarios1centro_visualizacion_id" name="{centro_visualizacion_id_Name}">
+                <option selected value="">...</option>
+                {centro_visualizacion_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Panel1Panel2mobiliarios1Button_Insert" class="Button" alt="Agregar" value="Agregar" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="Panel1Panel2mobiliarios1Button_Update" class="Button" alt="Enviar" value="Enviar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="Panel1Panel2mobiliarios1Button_Delete" class="Button" alt="Borrar" value="Borrar" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1Panel2mobiliarios1Button_Cancel" class="Button" alt="Cancelar" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record mobiliarios1 --><!-- END Panel Panel2 -->
+<!-- BEGIN Panel Panel3 -->
+<!-- BEGIN Panel Panel4 -->
+<!-- BEGIN Record mobiliarios2 -->
+<form id="Panel1Panel3Panel4mobiliarios2" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="4">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">ID</td> 
+            <td><input type="text" id="Panel1Panel3Panel4mobiliarios2mobiliario_id" readonly value="{mobiliario_id}" name="{mobiliario_id_Name}"></td> 
+            <td><label for="Panel1Panel3Panel4mobiliarios2proveedor_razon_social">Proveedor Mantenimiento</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4mobiliarios2proveedor_razon_social" readonly value="{proveedor_razon_social}" name="{proveedor_razon_social_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3Panel4mobiliarios2tipo_mobiliario_descrip">Tipo Mobiliario</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4mobiliarios2tipo_mobiliario_descrip" readonly value="{tipo_mobiliario_descrip}" name="{tipo_mobiliario_descrip_Name}"></td> 
+            <td><label for="Panel1Panel3Panel4mobiliarios2centro_visualizacion_ident">Centro Visualizacion</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4mobiliarios2centro_visualizacion_ident" readonly value="{centro_visualizacion_ident}" name="{centro_visualizacion_ident_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3Panel4mobiliarios2tipo_estado_mobiliario_descrip">Estado</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4mobiliarios2tipo_estado_mobiliario_descrip" readonly value="{tipo_estado_mobiliario_descrip}" name="{tipo_estado_mobiliario_descrip_Name}"></td> 
+            <td>&nbsp;</td> 
+            <td>&nbsp;</td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: right" colspan="4">
+              <div align="left">
+                <!-- BEGIN Button Button_Update --><input type="submit" id="Panel1Panel3Panel4mobiliarios2Button_Update" class="Button" alt="Enviar" value="Actualizar" name="{Button_Name}"><!-- END Button Button_Update --><a href="{mobiliarios_Insert_Src}" id="Panel1Panel3Panel4mobiliarios2mobiliarios_Insert">Agregar Nuevo</a> 
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record mobiliarios2 -->
+<!-- BEGIN Grid mobiliarios -->
+<table id="Panel1Panel3Panel4mobiliarios" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="../Styles/Simple/Images/Spacer.gif"></td> 
+          <td class="th">Lista de Mobiliarios</td> 
+          <td class="HeaderRight"><img alt="" src="../Styles/Simple/Images/Spacer.gif"></td>
+        </tr>
+      </table>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_mobiliario_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4mobiliariosSorter_mobiliario_id">ID</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_mobiliario_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_tipo_mobiliario_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4mobiliariosSorter_tipo_mobiliario_id">Tipo Mobiliario</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_tipo_mobiliario_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_tipo_estado_mobiliario_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4mobiliariosSorter_tipo_estado_mobiliario_id">Estado</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_tipo_estado_mobiliario_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_proveedor_mantenimiento_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4mobiliariosSorter_proveedor_mantenimiento_id">Proveedor Mantenimiento</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_proveedor_mantenimiento_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_centro_visualizacion_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4mobiliariosSorter_centro_visualizacion_id">Centro Visualizacion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_centro_visualizacion_id --></th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td style="TEXT-ALIGN: right"><a href="{mobiliario_id_Src}" id="Panel1Panel3Panel4mobiliariosmobiliario_id_{mobiliarios:rowNumber}">{mobiliario_id}</a>&nbsp;</td> 
+          <td style="TEXT-ALIGN: right">{tipo_mobiliario_descrip}&nbsp;</td> 
+          <td style="TEXT-ALIGN: right">{tipo_estado_mobiliario_descrip}&nbsp;</td> 
+          <td style="TEXT-ALIGN: right">{proveedor_razon_social}&nbsp;</td> 
+          <td style="TEXT-ALIGN: right">{centro_visualizacion_ident}&nbsp;</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="5"><font color="#ff0000"><strong>No hay registros</strong></font></td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="5">&nbsp; 
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/Simple/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/Simple/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/Simple/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/Simple/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} de&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/Simple/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/Simple/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/Simple/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/Simple/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid mobiliarios --><!-- END Panel Panel4 -->
+<!-- BEGIN Panel Panel5 -->
+<!-- BEGIN Grid mobiliarios3 -->
+<table id="Panel1Panel3Panel5mobiliarios3" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_usuario_creacion_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel5mobiliarios3Sorter_usuario_creacion_id">Usuario Creacion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_usuario_creacion_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_fecha_creacion --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel5mobiliarios3Sorter_fecha_creacion">Fecha Creacion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_fecha_creacion --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_usuario_modificacion_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel5mobiliarios3Sorter_usuario_modificacion_id">Usuario Modificacion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_usuario_modificacion_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_fecha_modificacion --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel5mobiliarios3Sorter_fecha_modificacion">Fecha Modificacion</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_fecha_modificacion --></th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td style="TEXT-ALIGN: right">{usuario_creacion_id}&nbsp;</td> 
+          <td>{fecha_creacion}&nbsp;</td> 
+          <td style="TEXT-ALIGN: right">{usuario_modificacion_id}&nbsp;</td> 
+          <td>{fecha_modificacion}&nbsp;</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="4"><font color="#ff0000"><strong>No hay registros</strong></font></td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="4">
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/Simple/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/Simple/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/Simple/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/Simple/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} de&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/Simple/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/Simple/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/Simple/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/Simple/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid mobiliarios3 --><!-- END Panel Panel5 -->
+<!-- BEGIN Panel Panel6 --><!-- END Panel Panel6 --><!-- END Panel Panel3 --><!-- END Panel Panel1 -->
+</body>
+</html>

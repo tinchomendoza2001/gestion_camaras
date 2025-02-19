@@ -1,0 +1,549 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>NVK</title>
+<link rel="stylesheet" type="text/css" href="../Styles/common.css">
+<script>
+function myFunction(valor){
+        document.getElementById(valor.name).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+//console.log(event.target.name);       
+  if (!event.target.matches('.dropbtn')) {
+        var valor = "dropdown-content";
+    var dropdowns = document.getElementsByClassName(valor);
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+function buscar(valor){//busca dato
+    $.ajax({
+        data: {"nombre" : $("#Panel1nvkSearchs_nvk_nro_serie").val()},
+        type: "GET",
+        url: "buscarnvk.php",
+    })
+     .done(function( data, textStatus, jqXHR ) {
+        $("#Panel1nvkSearchs_nvk_id").val(data);
+     })
+     .fail(function( jqXHR, textStatus, errorThrown ) {
+         $("#Panel1nvkSearchs_nvk_id").val('');
+    });
+}
+</script>
+<script language="JavaScript" type="text/javascript">
+//Begin CCS script
+//Include Common JSFunctions @1-6ADB6CED
+</script>
+<script src="../ClientI18N.php?file=Globalize.js&amp;locale={res:CCS_LocaleID}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//End Include Common JSFunctions
+
+//Include User Scripts @1-CCFE788A
+</script>
+{page:scriptIncludes}
+<script type="text/javascript">
+//End Include User Scripts
+
+//Features CSS @1-A1AE511C
+</script>
+<style type="text/css">
+    .Panel1nvkSearchs_nvk_nro_serie-autocomplete {
+        max-height: 250px;
+        width: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+<script type="text/javascript">
+//End Features CSS
+
+//Common Script Start @1-8BFA436B
+jQuery(function ($) {
+    var features = { };
+    var actions = { };
+    var params = { };
+//End Common Script Start
+
+//Controls Selecting @1-DDFB9246
+    $('body').ccsBind(function() {
+        features["Panel1nvkSearchs_nvk_nro_serieAutocomplete2"] = $('*:ccsControl(Panel1, nvkSearch, s_nvk_nro_serie)');
+        features["Panel1Panel2DialogPanel1"] = $('*:ccsControl(Panel1, Panel2)');
+        features["Panel1Panel3Panel4TabbedTab1"] = $('*:ccsControl(Panel1, Panel3, Panel4)');
+        features["Panel1Panel3Panel5TabbedTab2"] = $('*:ccsControl(Panel1, Panel3, Panel5)');
+        features["Panel1Panel3Panel6TabbedTab3"] = $('*:ccsControl(Panel1, Panel3, Panel6)');
+        features["Panel1Panel3TabbedView1"] = $('*:ccsControl(Panel1, Panel3)');
+        features["Panel1UpdatePanel1"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_show"] = $('*:ccsControl(Panel1)');
+        features["Panel1condition_for_hide"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_link_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_submit_Condition"] = $('*:ccsControl(Panel1)');
+        features["Panel1ccc_others_Condition"] = $('*:ccsControl(Panel1)');
+    });
+//End Controls Selecting
+
+//Feature Parameters @1-6D4D7D26
+    params["Panel1nvkSearchs_nvk_nro_serieAutocomplete2"] = { 
+        template: '{@text}',
+        customCssClassName: "Panel1nvkSearchs_nvk_nro_serie-autocomplete",
+        source: "../services/modulo_nvk_nvk_s_nvk_nro_serie_Autocomplete1.php"
+    };
+    params["Panel1Panel2DialogPanel1"] = { 
+        title: "Agregar/Editar Nvk ",
+        modal: true,
+        width: 280,
+        autoOpen: false
+    };
+    params["Panel1Panel3TabbedView1"] = { 
+        tabs: [
+            { selector: '*:ccsControl(Panel1, Panel3, Panel4)', caption: "General" },
+            { selector: '*:ccsControl(Panel1, Panel3, Panel5)', caption: "Info" },
+            { selector: '*:ccsControl(Panel1, Panel3, Panel6)', caption: "Hist. Mantenimiento" }
+        ]
+    };
+    params["Panel1UpdatePanel1"] = {
+        name: "Panel1"
+    };
+//End Feature Parameters
+
+//Feature Init @1-56232E36
+    features["Panel1nvkSearchs_nvk_nro_serieAutocomplete2"].ccsBind(function() {
+        this.ccsAutoComplete(params["Panel1nvkSearchs_nvk_nro_serieAutocomplete2"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.ccsDialog(params["Panel1Panel2DialogPanel1"]);
+    });
+    features["Panel1Panel3TabbedView1"].ccsBind(function() {
+        this.ccsTabs(params["Panel1Panel3TabbedView1"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.ccsUpdatePanel(params["Panel1UpdatePanel1"]);
+    });
+//End Feature Init
+
+//DialogPanel1 show Entry Point @72-C665C449
+    actions["Panel1Panel2DialogPanel1_show"] = function () {
+        features["Panel1Panel2DialogPanel1"].ccsDialog("show");
+        return false;
+    };
+//End DialogPanel1 show Entry Point
+
+//DialogPanel1 hide Entry Point @72-C5416BBC
+    actions["Panel1Panel2DialogPanel1_hide"] = function () {
+        features["Panel1Panel2DialogPanel1"].ccsDialog("hide");
+    };
+//End DialogPanel1 hide Entry Point
+
+//condition_for_show start Entry Point Start @45-4617342F
+    actions["Panel1condition_for_show_start"] = function (eventType, parameters) {
+//End condition_for_show start Entry Point Start
+
+//condition_for_show start Entry Point Body @45-F9058955
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "link")) {
+            self.trigger($.Event("true.condition_for_show"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_show"), {});
+        }
+//End condition_for_show start Entry Point Body
+
+//condition_for_show start Entry Point End @45-6A43FC60
+    };
+//End condition_for_show start Entry Point End
+
+//condition_for_hide start Entry Point Start @50-5A53631F
+    actions["Panel1condition_for_hide_start"] = function (eventType, parameters) {
+//End condition_for_hide start Entry Point Start
+
+//condition_for_hide start Entry Point Body @50-4B4C4DB5
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] == "submit" && $("#ErrorBlock").length == 0)) {
+            self.trigger($.Event("true.condition_for_hide"), {});
+        } else {
+            self.trigger($.Event("false.condition_for_hide"), {});
+        }
+//End condition_for_hide start Entry Point Body
+
+//condition_for_hide start Entry Point End @50-6A43FC60
+    };
+//End condition_for_hide start Entry Point End
+
+//ccc_link_Condition start Entry Point Start @55-505B3325
+    actions["Panel1ccc_link_Condition_start"] = function (eventType, parameters) {
+//End ccc_link_Condition start Entry Point Start
+
+//ccc_link_Condition start Entry Point Body @55-4B8521D3
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "link")) {
+            self.trigger($.Event("true.ccc_link_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_link_Condition"), {});
+        }
+//End ccc_link_Condition start Entry Point Body
+
+//ccc_link_Condition start Entry Point End @55-6A43FC60
+    };
+//End ccc_link_Condition start Entry Point End
+
+//ccc_submit_Condition start Entry Point Start @66-D5BAC60E
+    actions["Panel1ccc_submit_Condition_start"] = function (eventType, parameters) {
+//End ccc_submit_Condition start Entry Point Start
+
+//ccc_submit_Condition start Entry Point Body @66-D25EF30D
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "submit")) {
+            self.trigger($.Event("true.ccc_submit_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_submit_Condition"), {});
+        }
+//End ccc_submit_Condition start Entry Point Body
+
+//ccc_submit_Condition start Entry Point End @66-6A43FC60
+    };
+//End ccc_submit_Condition start Entry Point End
+
+//ccc_others_Condition start Entry Point Start @81-52A5E8CF
+    actions["Panel1ccc_others_Condition_start"] = function (eventType, parameters) {
+//End ccc_others_Condition start Entry Point Start
+
+//ccc_others_Condition start Entry Point Body @81-D9CD92AF
+        var self = $("*:ccsSameLevelControl(" + $(this).ccsId() + ", Panel1)");
+        if (true==(params["click"] = "")) {
+            self.trigger($.Event("true.ccc_others_Condition"), {});
+        } else {
+            self.trigger($.Event("false.ccc_others_Condition"), {});
+        }
+//End ccc_others_Condition start Entry Point Body
+
+//ccc_others_Condition start Entry Point End @81-6A43FC60
+    };
+//End ccc_others_Condition start Entry Point End
+
+//Event Binding @1-9575B2F7
+    features["Panel1condition_for_show"].ccsBind(function() {
+        this.bind("true.condition_for_show", actions["Panel1Panel2DialogPanel1_show"]);
+    });
+    features["Panel1condition_for_hide"].ccsBind(function() {
+        this.bind("true.condition_for_hide", actions["Panel1Panel2DialogPanel1_hide"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_show_start"]);
+    });
+    features["Panel1UpdatePanel1"].ccsBind(function() {
+        this.bind("afterrefresh.ccsUpdatePanel", actions["Panel1condition_for_hide_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("show.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    features["Panel1Panel2DialogPanel1"].ccsBind(function() {
+        this.bind("hide.ccsDialog", actions["Panel1ccc_others_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel4, nvk4, nvk1_Insert)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel3, Panel4, nvk1, nvk_id)').ccsBind(function() {
+        this.bind("click", actions["Panel1ccc_link_Condition_start"]);
+    });
+    $('*:ccsControl(Panel1, Panel2, nvk2)').ccsBind(function() {
+        this.bind("submit", actions["Panel1ccc_submit_Condition_start"]);
+    });
+//End Event Binding
+
+//Plugin Calls @1-06A8AD21
+    $('*:ccsControl(Panel1, nvkSearch, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel2, nvk2, Button_Delete)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+    $('*:ccsControl(Panel1, Panel2, nvk2, Button_Cancel)').ccsBind(function() {
+        this.bind("click", function(){ $("body").data("disableValidation", true); });
+    });
+//End Plugin Calls
+
+//Common Script End @1-562554DE
+});
+//End Common Script End
+
+//End CCS script
+</script>
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/Style_doctype.css">
+<link rel="stylesheet" type="text/css" href="../Styles/Simple/jquery-ui.css">
+</head>
+<body>
+<!-- BEGIN Panel Panel1 -->
+<!-- BEGIN Record nvkSearch -->
+<form id="Panel1nvkSearch" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="{@error-block}" class="Error">
+            <td colspan="5">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td width="100">
+              <!-- BEGIN TextBox s_nvk_id --><input type="text" id="Panel1nvkSearchs_nvk_id" style="HEIGHT: 20px; WIDTH: 87px; FONT-WEIGHT: bold; TEXT-ALIGN: center; BACKGROUND-COLOR: #fcf5d8" maxlength="20" value="{s_nvk_id}" name="{s_nvk_id_Name}" size="20"><!-- END TextBox s_nvk_id --></td> 
+            <td class="th" width="100"><label for="Panel1nvkSearchs_nvk_nro_serie"><strong>ID o&nbsp;Nro Serie</strong></label></td> 
+            <td>
+              <!-- BEGIN TextBox s_nvk_nro_serie --><input type="text" onkeyup="buscar(this.value);" onblur="buscar(this.value);" id="Panel1nvkSearchs_nvk_nro_serie" style="HEIGHT: 20px; WIDTH: 99%" maxlength="10" size="10" value="{s_nvk_nro_serie}" name="{s_nvk_nro_serie_Name}"><!-- END TextBox s_nvk_nro_serie --></td> 
+            <td class="th" width="50">
+              <!-- BEGIN Button Button_DoSearch --><input type="submit" id="Panel1nvkSearchButton_DoSearch" class="Button" alt="Buscar" value="Buscar" name="{Button_Name}"><!-- END Button Button_DoSearch --></td> 
+            <td class="th" width="50">
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1nvkSearchButton_Cancel" class="Button" alt="Button1" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record nvkSearch -->
+<!-- BEGIN Panel Panel2 -->
+<!-- BEGIN Record nvk2 -->
+<form id="Panel1Panel2nvk2" method="post" name="{HTMLFormName}" action="{Action}">
+  <table>
+    <tr>
+      <td valign="top">
+        <table>
+          <!-- BEGIN Error -->
+          <tr id="ErrorBlock" class="Error">
+            <td colspan="2">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr>
+            <td><label for="Panel1Panel2nvk2nvk_marca"><strong>Marca</strong></label></td> 
+            <td><input type="text" id="Panel1Panel2nvk2nvk_marca" maxlength="32" size="32" value="{nvk_marca}" name="{nvk_marca_Name}"></td>
+          </tr>
+ 
+          <tr>
+            <td><label for="Panel1Panel2nvk2nvk_modelo"><strong>Modelo</strong></label></td> 
+            <td><input type="text" id="Panel1Panel2nvk2nvk_modelo" maxlength="32" size="32" value="{nvk_modelo}" name="{nvk_modelo_Name}"></td>
+          </tr>
+ 
+          <tr>
+            <td><label for="Panel1Panel2nvk2nvk_nro_serie"><strong>Nro Serie</strong></label></td> 
+            <td><input type="text" id="Panel1Panel2nvk2nvk_nro_serie" maxlength="10" size="10" value="{nvk_nro_serie}" name="{nvk_nro_serie_Name}"></td>
+          </tr>
+ 
+          <tr>
+            <td><label for="Panel1Panel2nvk2nvk_capacidad"><strong>Capacidad</strong></label></td> 
+            <td><input type="text" id="Panel1Panel2nvk2nvk_capacidad" maxlength="10" size="10" value="{nvk_capacidad}" name="{nvk_capacidad_Name}"></td>
+          </tr>
+ 
+          <tr>
+            <td class="th">Cent. Visual.&nbsp;</td> 
+            <td>
+              <select id="Panel1Panel2nvk2centro_visualizacion_id" name="{centro_visualizacion_id_Name}">
+                <option selected value="">Seleccionar Valor</option>
+                {centro_visualizacion_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr>
+            <td class="th"><label for="Panel1Panel2nvk2proveedor_id">Proveedor</label></td> 
+            <td>
+              <select id="Panel1Panel2nvk2proveedor_id" name="{proveedor_id_Name}">
+                <option selected value="">Seleccionar Valor</option>
+                {proveedor_id_Options}
+              </select>
+ </td>
+          </tr>
+ 
+          <tr>
+            <td style="TEXT-ALIGN: right" colspan="2">
+              <!-- BEGIN Button Button_Insert --><input type="submit" id="Panel1Panel2nvk2Button_Insert" alt="Agregar" value="Agregar" name="{Button_Name}"><!-- END Button Button_Insert -->
+              <!-- BEGIN Button Button_Update --><input type="submit" id="Panel1Panel2nvk2Button_Update" alt="Enviar" value="Actualizar" name="{Button_Name}"><!-- END Button Button_Update -->
+              <!-- BEGIN Button Button_Delete --><input type="submit" id="Panel1Panel2nvk2Button_Delete" alt="Borrar" value="Borrar" name="{Button_Name}"><!-- END Button Button_Delete -->
+              <!-- BEGIN Button Button_Cancel --><input type="submit" id="Panel1Panel2nvk2Button_Cancel" alt="Cancelar" value="Cancelar" name="{Button_Name}"><!-- END Button Button_Cancel --></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record nvk2 --><!-- END Panel Panel2 -->
+<!-- BEGIN Panel Panel3 -->
+<!-- BEGIN Panel Panel4 -->
+<!-- BEGIN Record nvk4 -->
+<form id="Panel1Panel3Panel4nvk4" method="post" name="{HTMLFormName}" action="{Action}">
+  <table class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+    <tr>
+      <td valign="top">
+        <table class="Record" cellspacing="0" cellpadding="0">
+          <!-- BEGIN Error -->
+          <tr id="Panel1Panel3Panel4nvk4ErrorBlock" class="Error">
+            <td colspan="4">{Error}</td>
+          </tr>
+          <!-- END Error -->
+          <tr class="Controls">
+            <td class="th">ID&nbsp;</td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4nvk_id" readonly value="{nvk_id}" name="{nvk_id_Name}"></td> 
+            <td>
+              <div>
+                Centro Visualizacion 
+              </div>
+            </td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4centro_visualizacion_ident" readonly value="{centro_visualizacion_ident}" name="{centro_visualizacion_ident_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3Panel4nvk4nvk_marca">Marca</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4nvk_marca" readonly maxlength="32" size="32" value="{nvk_marca}" name="{nvk_marca_Name}"></td> 
+            <td><label for="Panel1Panel3Panel4nvk4tipo_estado_id">Estado</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4tipo_estado_id" readonly value="{tipo_estado_id}" name="{tipo_estado_id_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3Panel4nvk4nvk_modelo">Modelo</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4nvk_modelo" readonly maxlength="32" size="32" value="{nvk_modelo}" name="{nvk_modelo_Name}"></td> 
+            <td><label for="Panel1Panel3Panel4nvk4proveedor_razon_social">Proveedor</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4proveedor_razon_social" readonly value="{proveedor_razon_social}" name="{proveedor_razon_social_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3Panel4nvk4nvk_nro_serie">Nro Serie</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4nvk_nro_serie" readonly maxlength="10" size="10" value="{nvk_nro_serie}" name="{nvk_nro_serie_Name}"></td> 
+            <td>Ultimo Mantenimiento</td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4ultimo_mantenimiento" readonly value="{ultimo_mantenimiento}" name="{ultimo_mantenimiento_Name}"></td>
+          </tr>
+ 
+          <tr class="Controls">
+            <td class="th"><label for="Panel1Panel3Panel4nvk4nvk_capacidad">Capacidad</label></td> 
+            <td><input type="text" id="Panel1Panel3Panel4nvk4nvk_capacidad" readonly maxlength="10" size="10" value="{nvk_capacidad}" name="{nvk_capacidad_Name}"></td> 
+            <td></td> 
+            <td>&nbsp;</td>
+          </tr>
+ 
+          <tr class="Bottom">
+            <td style="TEXT-ALIGN: left" colspan="4"><a href="{nvk1_Insert_Src}" id="Panel1Panel3Panel4nvk4nvk1_Insert"><img style="MARGIN-TOP: 0px" alt="" src="../iconos/mas.png" width="12" align="left" height="12"><font color="#0059b2">Agregar Nuevo</font></a> </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- END Record nvk4 -->
+<!-- BEGIN Grid nvk1 -->
+<table id="Panel1Panel3Panel4nvk1" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Header" cellspacing="0" cellpadding="0" border="0">
+        <tr>
+          <td class="HeaderLeft"><img alt="" src="../Styles/Simple/Images/Spacer.gif"></td> 
+          <td class="th">Lista de NVK</td> 
+          <td class="HeaderRight"><img alt="" src="../Styles/Simple/Images/Spacer.gif"></td>
+        </tr>
+      </table>
+ 
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_nkv_id --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4nvk1Sorter_nkv_id">ID</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_nkv_id --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_nvk_marca --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4nvk1Sorter_nvk_marca">Marca</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_nvk_marca --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_nvk_modelo --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4nvk1Sorter_nvk_modelo">Modelo</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_nvk_modelo --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_nvk_nro_serie --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4nvk1Sorter_nvk_nro_serie">Nro Serie</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_nvk_nro_serie --></th>
+ 
+          <th scope="col">
+          <!-- BEGIN Sorter Sorter_nvk_capacidad --><span class="Sorter"><a href="{Sort_URL}" id="Panel1Panel3Panel4nvk1Sorter_nvk_capacidad">Capacidad</a> 
+          <!-- BEGIN Asc_On --><img alt="Ascendente" src="../Styles/Simple/Images/Asc.gif"><!-- END Asc_On -->
+          <!-- BEGIN Desc_On --><img alt="Descendente" src="../Styles/Simple/Images/Desc.gif"><!-- END Desc_On --></span><!-- END Sorter Sorter_nvk_capacidad --></th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        
+        <tr class="Row">
+          <td style="TEXT-ALIGN: right"><a href="{nvk_id_Src}" id="Panel1Panel3Panel4nvk1nvk_id_{nvk1:rowNumber}">{nvk_id}</a></td>
+          <td>{nvk_marca}</td>
+          <td>{nvk_modelo}</td>
+          <td style="TEXT-ALIGN: right">{nvk_nro_serie}</td>
+          <td style="TEXT-ALIGN: right">{nvk_capacidad}</td>
+        </tr>
+        
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="5"><font color="#ff0000"><strong>No hay registros</strong></font></td>
+        </tr>
+        <!-- END NoRecords -->
+        <tr class="Footer">
+          <td colspan="5">&nbsp; 
+            <!-- BEGIN Navigator Navigator --><span class="Navigator">Registro por página 
+            <select style="VERTICAL-ALIGN: middle" name="{FormName}PageSize" data-grid-size="{FormName}">
+              <option selected value="">-</option>
+ {PageSize_Options}
+            </select>
+ 
+            <!-- BEGIN First_On --><a href="{First_URL}"><img alt="{First_URL}" src="../Styles/Simple/Images/First.gif"></a> <!-- END First_On -->
+            <!-- BEGIN First_Off --><img alt="{First_URL}" src="../Styles/Simple/Images/FirstOff.gif"><!-- END First_Off -->
+            <!-- BEGIN Prev_On --><a href="{Prev_URL}"><img alt="{Prev_URL}" src="../Styles/Simple/Images/Prev.gif"></a> <!-- END Prev_On -->
+            <!-- BEGIN Prev_Off --><img alt="{Prev_URL}" src="../Styles/Simple/Images/PrevOff.gif"><!-- END Prev_Off -->&nbsp;{Page_Number} de&nbsp;{Total_Pages}&nbsp; 
+            <!-- BEGIN Next_On --><a href="{Next_URL}"><img alt="{Next_URL}" src="../Styles/Simple/Images/Next.gif"></a> <!-- END Next_On -->
+            <!-- BEGIN Next_Off --><img alt="{Next_URL}" src="../Styles/Simple/Images/NextOff.gif"><!-- END Next_Off -->
+            <!-- BEGIN Last_On --><a href="{Last_URL}"><img alt="{Last_URL}" src="../Styles/Simple/Images/Last.gif"></a> <!-- END Last_On -->
+            <!-- BEGIN Last_Off --><img alt="{Last_URL}" src="../Styles/Simple/Images/LastOff.gif"><!-- END Last_Off --></span><!-- END Navigator Navigator -->&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid nvk1 --><!-- END Panel Panel4 -->
+<!-- BEGIN Panel Panel5 -->
+<!-- BEGIN Grid nvk3 -->
+<table id="Panel1Panel3Panel5nvk3" class="MainTable" cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tr>
+    <td valign="top">
+      <table class="Grid" cellspacing="0" cellpadding="0">
+        <tr class="Caption">
+          <th scope="col">Usuario Creacion</th>
+ 
+          <th scope="col">Fecha Creacion</th>
+ 
+          <th scope="col">Usuario Modificacion</th>
+ 
+          <th scope="col">Fecha Modificacion</th>
+        </tr>
+ 
+        <!-- BEGIN Row -->
+        <tr class="Row">
+          <td style="TEXT-ALIGN: right">{uc_usuario_nombre}&nbsp;</td> 
+          <td>{fecha_creacion}&nbsp;</td> 
+          <td style="TEXT-ALIGN: right">{um_usuario_nombre}&nbsp;</td> 
+          <td>{fecha_modificacion}&nbsp;</td>
+        </tr>
+ <!-- END Row -->
+        <!-- BEGIN NoRecords -->
+        <tr class="NoRecords">
+          <td colspan="4"><font color="#ff0000"><strong>No hay registros</strong></font></td>
+        </tr>
+        <!-- END NoRecords -->
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END Grid nvk3 --><!-- END Panel Panel5 -->
+<!-- BEGIN Panel Panel6 --><!-- END Panel Panel6 --><!-- END Panel Panel3 --><!-- END Panel Panel1 -->
+</body>
+</html>
